@@ -1,15 +1,13 @@
 const methods = {};
 
 methods.proposal = require('./proposal');
-// methods.people = require('./people');
 // methods.headsUnderProject = require('./heads_under_project');
 methods.heads = require('./heads');
-// methods.loginCreden
-// tials = require('./login_credentials');
-// methods.people = require('./people');
+methods.loginCredentials = require('./login_credentials');
+methods.people = require('./people');
 // methods.purchaseUnderProject = require('./purchase_under_project');
 methods.request = require('./request');
-// methods.stocks = require('./stocks');
+methods.stocks = require('./stocks');
 
 module.exports = methods;
 
@@ -18,6 +16,7 @@ var heads = require('./heads');
 var proposal = require('./proposal');
 var people = require('./people');
 var request = require('./request');
+var login_credentials = require('./login_credentials');
 
 //TEST
 
@@ -82,8 +81,8 @@ var request = require('./request');
 // PEOPLE TEST
 
 // people.addPeople({
-//   people_id:2,
-//   name:"sasidharan",
+//   people_id:3,
+//   name:"zothy",
 //   designation:"principal_investigator",
 //   privilege:2,
 //   date:"2018-03-03",
@@ -151,5 +150,42 @@ var request = require('./request');
 //   approval_level: 2,
 //   estimated_amount : 1200.00,
 //   remark: {}}).then(function(result){
+// console.log(result);
+// });
+
+// //CREATE
+// login_credentials.addLoginCredentials({
+//   people_id:2,
+//   username: "Ram",
+//   password: "Jaanu"
+// }).then(function(result){
+//   console.log(result);
+// });
+
+// //FIND BY ID
+// login_credentials.findById(0).then(function(result){
+// console.log(result);
+// });
+
+// //GET ALL
+// login_credentials.getAllLoginCredentials().then(function(result){
+//   result.forEach(function(row){
+//     console.log(row.get('people_id'));
+//   });
+// });
+// //DELETE
+// login_credentials.deleteLoginCredentials({people_id:1}).then(function(result){
+// console.log(result);
+// });
+// //UPDATE LOGINCREDENTIALS
+// login_credentials.updateLoginCredentials({
+//   people_id:2,
+//   username: "Ram",
+//   password: "Jaanu"
+// },{
+//   people_id:3,
+//   username: "swathi",
+//   password: "db"
+// }).then(function(result){
 // console.log(result);
 // });
