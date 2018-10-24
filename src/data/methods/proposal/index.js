@@ -6,7 +6,6 @@ const models = require('../../models');
 const proposalMethods = {};
 
 proposalMethods.addProposals = (info) => {
-  console.log('inside adding proposals');
   return new Promise((resolve, reject) => {
     models.proposal.create(info)
       .then((result) => {
