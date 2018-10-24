@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) =>
         primaryKey : true
       },
       
-      name: DataTypes.VARCHAR(45),
-       designation: DataTypes.VARCHAR(45),
+      name: DataTypes.STRING(45),
+       designation: DataTypes.STRING(45),
       privilege: DataTypes.ENUM(),
       date: DataTypes.DATE(),
       status: DataTypes.TINYINT()
