@@ -3,12 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const proposalMethods = {};
+const headsUnderProjectMethods = {};
 
-proposalMethods.addProposals = (info) => {
-  console.log('inside adding proposals');
+headsUnderProjectMethods.addHeadsUnderProject = (info) => {
+  console.log('inside adding heads under project');
   return new Promise((resolve, reject) => {
-    models.proposal.create(info)
+    models.heads_under_project.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -20,7 +20,7 @@ proposalMethods.addProposals = (info) => {
 };
 
 // findid
-proposalMethods.findById = (project_id) => {
+headsUnderProjectMethods.findById = (project_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
     models.proposal.findAll({
@@ -40,7 +40,8 @@ proposalMethods.findById = (project_id) => {
   });
 };
 
-proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
+headsUnderProjectMethods.getAllProposals = () => new Promise((resolve,
+  reject) => {
   models.proposal.findAll()
     .then((result) => {
       resolve(result);
@@ -51,12 +52,9 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
-<<<<<<< HEAD
-proposalMethods.updateProposal = (info, data) => new Promise((
-  resolve, reject) => {
-=======
-proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
->>>>>>> 7a7871fd84cf6a85c028d55f871e2a69d8c94d09
+headsUnderProjectMethods.updateProposal = (info, data) => new Promise((
+  resolve, reject,
+) => {
   models.proposal.update(data, {
     where: {
       project_id: info.project_id,
@@ -76,7 +74,10 @@ proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) =
 
 
 
-proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
+headsUnderProjectMethods.deleteProposal = info => new Promise((
+  resolve,
+  reject,
+) => {
   models.proposal.destroy({
     where: {
       project_id: info.project_id,
@@ -94,4 +95,4 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
   });
 });
 
-module.exports = proposalMethods;
+module.exports = headsUnderProjectMethods;
