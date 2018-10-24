@@ -13,9 +13,14 @@ methods.heads = require('./heads');
 
 module.exports = methods;
 
+<<<<<<< HEAD
 //var proposal = require('./proposal');
 var heads = require('./heads');
 
+=======
+var proposal = require('./proposal');
+var people = require('./people');
+>>>>>>> e53eb8cddf61564bb8c054e2cf8db305ecda4f3f
 
 //TEST
 
@@ -43,11 +48,12 @@ var heads = require('./heads');
 //     console.log(row.get('project_id'));
 //   });
 // });
-
+//DELETE
 // proposal.deleteProposal({project_id:1}).then(function(result){
 // console.log(result);
 // });
 
+<<<<<<< HEAD
 //TEST
 
 //CREATE
@@ -77,3 +83,34 @@ console.log(result);
 }).catch(function(result){
 	console.log("Nothing to delete")
 });
+=======
+// PEOPLE TEST
+
+// people.addPeople({
+//   people_id:2,
+//   name:"sasidharan",
+//   designation:"principal_investigator",
+//   privilege:2,
+//   date:"2018-03-03",
+//   status:1
+// }).then(function(result){
+//   console.log(result.get('name'))
+// });
+
+// people.findById(1).then(function(result){
+//   console.log(result);
+// });
+
+// people.getAllPeople().then(function(result){
+//   console.log(result);
+// });
+
+// people.findById(1).then(function(result){
+//   console.log(result);
+// });
+
+//DELETE
+// people.deletePeople({people_id:1}).then(function(result){
+// console.log(result);
+// });
+>>>>>>> e53eb8cddf61564bb8c054e2cf8db305ecda4f3f

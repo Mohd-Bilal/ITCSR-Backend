@@ -3,12 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const peopleMethods = {};
+const stocksMethods = {};
 
-peopleMethods.addPeople = (info) => {
-  console.log('inside adding people');
+stocksMethods.addStocks = (info) => {
+  console.log('inside adding stocks');
   return new Promise((resolve, reject) => {
-    models.people.create(info)
+    models.stocks.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -19,23 +19,20 @@ peopleMethods.addPeople = (info) => {
   });
 };
 
+
 // findid
-peopleMethods.findById = (people_id) => {
+stocksMethods.findById = (stock_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.people.findAll({
+    models.stocks.findAll({
       where:
-      { people_id },
+      { stock_id },
 
-    }).then((people) => {
-      if (people) {
-
-        resolve( people);
-
-        resolve(people);
-
+    }).then((stocks) => {
+      if (stocks) {
+        resolve( stocks);
       } else {
-        reject(new Error('Not a valid  person id'));
+        reject(new Error('Not a valid  stock'));
       }
     }).catch((err) => {
       console.log(err);
@@ -44,9 +41,10 @@ peopleMethods.findById = (people_id) => {
   });
 };
 
- peopleMethods.getAllPeople = () => new Promise((resolve,
+
+ stocksMethods.getAllStocks = () => new Promise((resolve,
   reject) => {
-  models.people.findAll()
+  models.stocks.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -56,12 +54,12 @@ peopleMethods.findById = (people_id) => {
     });
 });
 
- peopleMethods.updatePeople = (info, data) => new Promise((
+ stocksMethods.updateStock = (info, data) => new Promise((
   resolve, reject,
 ) => {
-  models.people.update(data, {
+  models.stocks.update(data, {
     where: {
-      people_id: info.people_id,
+      stock_id: info.stock_id,
     },
   })
     .then((updated) => {
@@ -77,14 +75,13 @@ peopleMethods.findById = (people_id) => {
 });
 
 
-
- peopleMethods.deletePeople = info => new Promise((
+ stocksMethods.deleteStock = info => new Promise((
   resolve,
   reject,
 ) => {
-  models.people.destroy({
+  models.stocks.destroy({
     where: {
-      people_id: info.people_id,
+      stock_id: info.stock_id,
 
     },
   }).then((deleted) => {
@@ -99,4 +96,4 @@ peopleMethods.findById = (people_id) => {
   });
 });
 
-module.exports =  peopleMethods;
+module.exports =  stocksMethods;
