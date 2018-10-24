@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) =>
       
       name: DataTypes.STRING(45),
        designation: DataTypes.STRING(45),
-      privilege: DataTypes.ENUM(),
+      privilege: DataTypes.ENUM("Clerk","Principal Investigator","Principal"),
       date: DataTypes.DATE(),
       status: DataTypes.TINYINT()
 
