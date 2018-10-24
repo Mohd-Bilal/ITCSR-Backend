@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) =>
       {
         type        : DataTypes.INTEGER(),
         primaryKey: true
-      }
+      },
         parameter_name : DataTypes.STRING(45)
     }
   );
