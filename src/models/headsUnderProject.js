@@ -6,16 +6,8 @@ module.exports = (sequelize, DataTypes) =>
   	  'heads_under_project',
     {
      
-      project_id : 
-      {
-        type: DataTypes.INTEGER(),
-        primaryKey : true
-      },
-      head_id :{
-        type: DataTypes.INTEGER(),
-        primaryKey :true
-
-      },
+      project_id : DataTypes.INTEGER(),
+      head_id : DataTypes.INTEGER(),
       fund :DataTypes.DOUBLE(),
       spent:DataTypes.DOUBLE()
 
