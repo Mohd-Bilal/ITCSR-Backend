@@ -14,7 +14,7 @@ methods.proposal = require('./proposal');
 module.exports = methods;
 
 var proposal = require('./proposal');
-
+var people = require('./people');
 
 //TEST
 
@@ -42,7 +42,37 @@ var proposal = require('./proposal');
 //     console.log(row.get('project_id'));
 //   });
 // });
-
+//DELETE
 // proposal.deleteProposal({project_id:1}).then(function(result){
+// console.log(result);
+// });
+
+// PEOPLE TEST
+
+// people.addPeople({
+//   people_id:2,
+//   name:"sasidharan",
+//   designation:"principal_investigator",
+//   privilege:2,
+//   date:"2018-03-03",
+//   status:1
+// }).then(function(result){
+//   console.log(result.get('name'))
+// });
+
+// people.findById(1).then(function(result){
+//   console.log(result);
+// });
+
+// people.getAllPeople().then(function(result){
+//   console.log(result);
+// });
+
+// people.findById(1).then(function(result){
+//   console.log(result);
+// });
+
+//DELETE
+// people.deletePeople({people_id:1}).then(function(result){
 // console.log(result);
 // });
