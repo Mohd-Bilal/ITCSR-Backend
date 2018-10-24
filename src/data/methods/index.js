@@ -3,7 +3,7 @@ const methods = {};
 methods.proposal = require('./proposal');
 // methods.people = require('./people');
 // methods.headsUnderProject = require('./heads_under_project');
-// methods.heads = require('./heads');
+methods.heads = require('./heads');
 // methods.loginCreden
 // tials = require('./login_credentials');
 // methods.people = require('./people');
@@ -13,7 +13,8 @@ methods.proposal = require('./proposal');
 
 module.exports = methods;
 
-var proposal = require('./proposal');
+//var proposal = require('./proposal');
+var heads = require('./heads');
 
 
 //TEST
@@ -46,3 +47,33 @@ var proposal = require('./proposal');
 // proposal.deleteProposal({project_id:1}).then(function(result){
 // console.log(result);
 // });
+
+//TEST
+
+//CREATE
+// heads.addHeads({
+//   head_id:0,
+//   name:"machinery",
+//   remark:{"a":"b", "c":"d"}
+
+// }).then(function(result){
+//   console.log(result);
+// });
+
+// //FIND BY ID
+// heads.findById(1).then(function(result){
+// console.log(result);
+// });
+
+// //GET ALL
+// heads.getAllHeads().then(function(result){
+//   result.forEach(function(row){
+//     console.log(row.get('head_id'));
+//   });
+// });
+
+heads.deleteHeads({head_id:0}).then(function(result){
+console.log(result);
+}).catch(function(result){
+	console.log("Nothing to delete")
+});
