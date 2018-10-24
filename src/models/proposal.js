@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) =>
         primaryKey : true
       },
      
-      file_no: DataTypes.VARCHAR(45),
+      file_no: DataTypes.STRING(45),
       principal_investigator_id: DataTypes.INTEGER(),
-      name:DataTypes.VARCHAR(45),
+      name:DataTypes.STRING(45),
      data: DataTypes.JSON(),
      start_date:DataTypes.DATE(),
      duration:DataTypes.INTEGER()
