@@ -8,19 +8,16 @@ methods.heads = require('./heads');
 // tials = require('./login_credentials');
 // methods.people = require('./people');
 // methods.purchaseUnderProject = require('./purchase_under_project');
-// methods.request = require('./request');
+methods.request = require('./request');
 // methods.stocks = require('./stocks');
 
 module.exports = methods;
 
-<<<<<<< HEAD
-//var proposal = require('./proposal');
 var heads = require('./heads');
 
-=======
 var proposal = require('./proposal');
 var people = require('./people');
->>>>>>> e53eb8cddf61564bb8c054e2cf8db305ecda4f3f
+var request = require('./request');
 
 //TEST
 
@@ -53,7 +50,6 @@ var people = require('./people');
 // console.log(result);
 // });
 
-<<<<<<< HEAD
 //TEST
 
 //CREATE
@@ -78,12 +74,11 @@ var people = require('./people');
 //   });
 // });
 
-heads.deleteHeads({head_id:0}).then(function(result){
-console.log(result);
-}).catch(function(result){
-	console.log("Nothing to delete")
-});
-=======
+// heads.deleteHeads({head_id:0}).then(function(result){
+// console.log(result);
+// }).catch(function(result){
+// 	console.log("Nothing to delete")
+// });
 // PEOPLE TEST
 
 // people.addPeople({
@@ -113,4 +108,48 @@ console.log(result);
 // people.deletePeople({people_id:1}).then(function(result){
 // console.log(result);
 // });
->>>>>>> e53eb8cddf61564bb8c054e2cf8db305ecda4f3f
+
+// //CREATE
+// request.addRequest({
+//   request_id:0,
+//   project_id : 1,
+//   description: "First request is being submitted",
+//   date: "2018-02-11",
+//   approval_level: 0,
+//   estimated_amount : 1200.00,
+//   remark: {}
+// }).then(function(result){
+//   console.log(result);
+// });
+
+// //FIND BY ID
+// request.findById(1).then(function(result){
+// console.log(result);
+// });
+
+//GET ALL
+// request.getAllRequests().then(function(result){
+//   result.forEach(function(row){
+//     console.log(row.get('request_id'));
+//   });
+// });
+// //DELETE
+// request.deleteRequest({request_id:0}).then(function(result){
+// console.log(result);
+// });
+// //UPDATE REQUEST
+// request.updateRequest({request_id:0,
+//   project_id : 1,
+//   description: "First request is being submitted",
+//   date: "2018-02-11",
+//   approval_level: 0,
+//   estimated_amount : 1200.00,
+//   remark: {}},{request_id:0,
+//   project_id : 1,
+//   description: "First request is being submitted",
+//   date: "2018-02-11",
+//   approval_level: 2,
+//   estimated_amount : 1200.00,
+//   remark: {}}).then(function(result){
+// console.log(result);
+// });
