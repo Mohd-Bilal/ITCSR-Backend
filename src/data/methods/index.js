@@ -29,3 +29,11 @@ var proposal = require('./proposal');
 // }).then(function(result){
 //   console.log(result);
 // });
+
+// proposal.findById(3).then(function(result){
+// console.log(result);
+// });
+
+proposal.getAllProposals().then(function(result){
+  console.log(JSON.parse(result[0].dataValues));
+});

@@ -3,12 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const proposalMethods = {};
+const peopleMethods = {};
 
-proposalMethods.addProposals = (info) => {
-  console.log('inside adding proposals');
+peopleMethods.addPeople = (info) => {
+  console.log('inside adding people');
   return new Promise((resolve, reject) => {
-    models.proposal.create(info)
+    models.people.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -20,18 +20,18 @@ proposalMethods.addProposals = (info) => {
 };
 
 // findid
-proposalMethods.findById = (project_id) => {
+peopleMethods.findById = (people_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.proposal.findAll({
+    models.people.findAll({
       where:
-      { project_id },
+      { people_id },
 
-    }).then((proposals) => {
-      if (proposals) {
-        resolve(proposals);
+    }).then((people) => {
+      if (people) {
+        resolve( peoples);
       } else {
-        reject(new Error('Not a valid proposal id'));
+        reject(new Error('Not a valid  person id'));
       }
     }).catch((err) => {
       console.log(err);
@@ -40,9 +40,9 @@ proposalMethods.findById = (project_id) => {
   });
 };
 
-proposalMethods.getAllProposals = () => new Promise((resolve,
+ peopleMethods.getAllPeople = () => new Promise((resolve,
   reject) => {
-  models.proposal.findAll()
+  models.people.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -52,12 +52,12 @@ proposalMethods.getAllProposals = () => new Promise((resolve,
     });
 });
 
-proposalMethods.updateProposal = (info, data) => new Promise((
+ peopleMethods.updatePeople = (info, data) => new Promise((
   resolve, reject,
 ) => {
-  models.proposal.update(data, {
+  models.people.update(data, {
     where: {
-      project_id: info.project_id,
+      people_id: info.people_id,
     },
   })
     .then((updated) => {
@@ -74,13 +74,13 @@ proposalMethods.updateProposal = (info, data) => new Promise((
 
 
 
-proposalMethods.deleteProposal = info => new Promise((
+ peopleMethods.deletePeople = info => new Promise((
   resolve,
   reject,
 ) => {
-  models.proposal.destroy({
+  models.people.destroy({
     where: {
-      project_id: info.project_id,
+      people_id: info.people_id,
 
     },
   }).then((deleted) => {
@@ -95,4 +95,4 @@ proposalMethods.deleteProposal = info => new Promise((
   });
 });
 
-module.exports = proposalMethods;
+module.exports =  peopleMethods;
