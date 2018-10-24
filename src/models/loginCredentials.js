@@ -17,5 +17,9 @@ module.exports = (sequelize, DataTypes) =>
     }
   );
 
+  loginCredentials.associate = function(models){
+    models.loginCredentials.belongsTo(models.people, {foreignKey: 'people_id', targetKey: 'people_id'});
+  }
   return loginCredentials;
 };
+
