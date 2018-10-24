@@ -17,7 +17,8 @@ var proposal = require('./proposal');
 
 
 //TEST
- 
+
+//CREATE
 // proposal.addProposals({
 //   project_id:3,
 //   file_no:"./",
@@ -30,10 +31,18 @@ var proposal = require('./proposal');
 //   console.log(result);
 // });
 
+//FIND BY ID
 // proposal.findById(3).then(function(result){
 // console.log(result);
 // });
 
-proposal.getAllProposals().then(function(result){
-  console.log(JSON.parse(result[0].dataValues));
-});
+//GET ALL
+// proposal.getAllProposals().then(function(result){
+//   result.forEach(function(row){
+//     console.log(row.get('project_id'));
+//   });
+// });
+
+// proposal.deleteProposal({project_id:1}).then(function(result){
+// console.log(result);
+// });
