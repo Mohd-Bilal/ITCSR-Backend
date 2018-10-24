@@ -3,12 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const peopleMethods = {};
+const parametersunderheadsMethods = {};
 
-peopleMethods.addPeople = (info) => {
-  console.log('inside adding people');
+parametersunderheadsMethods.addParametersunderheads = (info) => {
+  console.log('inside adding parameter under heads');
   return new Promise((resolve, reject) => {
-    models.people.create(info)
+    models.parameters_under_heads.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -20,33 +20,32 @@ peopleMethods.addPeople = (info) => {
 };
 
 // findid
-peopleMethods.findById = (people_id) => {
-  // console.log('finding by id');
-  return new Promise((resolve, reject) => {
-    models.people.findAll({
-      where:
-      { people_id },
+// parameterunderheadsMethods.findById = (parameter_id) => {
+//   // console.log('finding by id');
+//   return new Promise((resolve, reject) => {
+//     models.parameter_under_heads.findAll({
+//       where:
+//       { paramter_id },
 
-    }).then((people) => {
-      if (people) {
+//     }).then((people) => {
+//       if (people) {
 
-        resolve( people);
+//         resolve( people);
 
-        resolve(people);
+//         resolve(people);
 
-      } else {
-        reject(new Error('Not a valid  person id'));
-      }
-    }).catch((err) => {
-      console.log(err);
-      reject(err);
-    });
-  });
-};
+//       } else {
+//         reject(new Error('Not a valid  person id'));
+//       }
+//     }).catch((err) => {
+//       console.log(err);
+//       reject(err);
+//     });
+//   });
+// };
 
- peopleMethods.getAllPeople = () => new Promise((resolve,
-  reject) => {
-  models.people.findAll()
+ parametersunderheadsMethods.getAllParametersunderheads = () => new Promise((resolve,reject) => {
+  models.parameters_under_heads.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -56,12 +55,10 @@ peopleMethods.findById = (people_id) => {
     });
 });
 
- peopleMethods.updatePeople = (info, data) => new Promise((
-  resolve, reject,
-) => {
-  models.people.update(data, {
+ parametersunderheadsMethods.updateParametersunderheads = (info, data) => new Promise((resolve, reject) => {
+  models.parameters_under_heads.update(data, {
     where: {
-      people_id: info.people_id,
+      parameter_id: info.people_id,
     },
   })
     .then((updated) => {

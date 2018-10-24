@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) =>
   (
     'stocks',
     {
+      stock_id:{
+        type: DataTypes.INTEGER(),
+        primaryKey:true
+      },
       date_of_purchase : DataTypes.DATE(),
       name : DataTypes.STRING(45),
       specification : DataTypes.STRING(100)

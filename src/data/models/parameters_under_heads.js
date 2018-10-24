@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) =>
 {
-  const parameters =
+  const parameters_under_heads=
   sequelize.define
   (
-    'parameters',
+    'parameters_under_heads',
     {
       head_id :
       {
@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) =>
     }
   );
 
-  parameters.associate = function(models){
-    parameters.belongsTo(models.heads, {foreignKey: 'head_id', targetKey: 'head_id'});
+  parameters_under_heads.associate = function(models){
+    parameters_under_heads.belongsTo(models.heads, {foreignKey: 'head_id', targetKey: 'head_id'});
   }
 
-  return parameters;
+  return parameters_under_heads;
 };
