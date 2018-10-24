@@ -29,7 +29,7 @@ peopleMethods.findById = (people_id) => {
 
     }).then((people) => {
       if (people) {
-        resolve( peoples);
+        resolve(people);
       } else {
         reject(new Error('Not a valid  person id'));
       }
