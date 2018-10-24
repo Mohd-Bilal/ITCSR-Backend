@@ -22,5 +22,12 @@ module.exports = (sequelize, DataTypes) =>
     }
   );
 
+  request.associate = function(models){
+    request.belongsTo(models.proposal, {foreignKey: 'project_id', targetKey: 'project_id'});
+  }
+  request.associate = function(models){
+    request.belongsTo(models.heads, {foreignKey: 'head_id', targetKey: 'head_id'});
+  }
+
   return request;
 };

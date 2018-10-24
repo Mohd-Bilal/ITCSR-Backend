@@ -21,5 +21,9 @@ module.exports = (sequelize, DataTypes) =>
     }
   );
 
+  proposal.associate = function(models){
+    proposal.belongsTo(models.people, {foreignKey: 'principal_investigator_id', targetKey: 'people_id'});
+  }
+
   return proposal;
 };

@@ -19,5 +19,13 @@ module.exports = (sequelize, DataTypes) =>
     }
   );
 
+  purchaseUnderProject.associate = function(models){
+    purchaseUnderProject.belongsTo(models.proposal, {foreignKey: 'project_id', targetKey: 'project_id'});
+  }
+
+  purchaseUnderProject.associate = function(models){
+    purchaseUnderProject.belongsTo(models.heads, {foreignKey: 'head_id', targetKey: 'head_id'});
+  }
+
   return purchaseUnderProject;
 };

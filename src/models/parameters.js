@@ -19,5 +19,9 @@ module.exports = (sequelize, DataTypes) =>
     }
   );
 
+  parameters.associate = function(models){
+    parameters.belongsTo(models.heads, {foreignKey: 'head_id', targetKey: 'head_id'});
+  }
+
   return parameters;
 };
