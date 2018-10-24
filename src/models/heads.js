@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) =>
         type       : DataTypes.INTEGER(),
         primaryKey : true
       },
-      name: DataTypes.VARCHAR(45),
+      name: DataTypes.STRING(45),
       remark: DataTypes.JSON()
 
     }
