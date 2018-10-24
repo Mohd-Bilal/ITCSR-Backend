@@ -53,8 +53,7 @@ proposalMethods.getAllProposals = () => new Promise((resolve,
 });
 
 proposalMethods.updateProposal = (info, data) => new Promise((
-  resolve, reject,
-) => {
+  resolve, reject) => {
   models.proposal.update(data, {
     where: {
       project_id: info.project_id,

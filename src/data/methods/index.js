@@ -24,7 +24,7 @@ var people = require('./people');
 
 //TEST
 
-//CREATE
+// CREATE
 // proposal.addProposals({
 //   project_id:3,
 //   file_no:"./",
@@ -36,6 +36,25 @@ var people = require('./people');
 // }).then(function(result){
 //   console.log(result);
 // });
+proposal.updateProposal({
+	project_id:3,
+  file_no:"./",
+  name:"manga",
+  data:{},
+  start_date:"2201-12-18",
+  duration:1000
+
+},{
+	project_id:3,
+  file_no:"blah",
+  name:"mazznga",
+  data:{},
+  start_date:"2201-12-18",
+  duration:1000
+
+}).then(function(result){
+	console.log(result);
+});
 
 //FIND BY ID
 // proposal.findById(3).then(function(result){
