@@ -5,20 +5,32 @@ const models = require('../../models');
 
 const requestMethods = {};
 
-requestMethods.addRequest = (info) => {
-  console.log('inside adding requests');
-  return new Promise((resolve, reject) => {
-    models.request.create(info)
-      .then((result) => {
-        resolve(result);
-      })
-      .catch((err) => {
-        console.log(err);
-        reject(err);
-      });
-  });
-};
+// requestMethods.addRequest = (info) => {
+//   console.log('inside adding requests');
+//   return new Promise((resolve, reject) => {
+//     models.request.create(info)
+//       .then((result) => {
+//         resolve(result);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//         reject(err);
+//       });
+//   });
+// };
 
+requestMethods.addRequest = (function(info){
+  return new Promise(function(resolve,reject){
+    models.heads_under_project.findById(info.project_id,info.head_id)
+    .then(function(result){
+      console.log(result);
+  }).catch(function(err){
+    reject(err);
+  });
+  });
+  
+
+})
 // findid
 requestMethods.findById = (request_id) => {
   // console.log('finding by id');

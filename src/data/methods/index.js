@@ -109,17 +109,17 @@ var login_credentials = require('./login_credentials');
 // });
 
 // //CREATE
-// request.addRequest({
-//   request_id:0,
-//   project_id : 1,
-//   description: "First request is being submitted",
-//   date: "2018-02-11",
-//   approval_level: 0,
-//   estimated_amount : 1200.00,
-//   remark: {}
-// }).then(function(result){
-//   console.log(result);
-// });
+request.addRequest({
+  request_id:30,
+  project_id : 1,
+  description: "First request is being submitted",
+  date: "2018-02-11",
+  approval_level: 0,
+  estimated_amount : 1200.00,
+  remark: {}
+}).then(function(result){
+  console.log(result);
+});
 
 // //FIND BY ID
 // request.findById(1).then(function(result){
