@@ -3,11 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const proposalMethods = {};
+const loginCredentialsMethods = {};
 
-proposalMethods.addProposals = (info) => {
+loginCredentialsMethods.addLoginCredentials = (info) => {
+  console.log('inside adding login credentials');
   return new Promise((resolve, reject) => {
-    models.proposal.create(info)
+    models.login_credentials.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -19,18 +20,18 @@ proposalMethods.addProposals = (info) => {
 };
 
 // findid
-proposalMethods.findById = (project_id) => {
+loginCredentialsMethods.findById = (people_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.proposal.findAll({
+    models.login_credentials.findAll({
       where:
-      { project_id },
+      { people_id },
 
-    }).then((proposals) => {
-      if (proposals) {
-        resolve(proposals);
+    }).then((logincredentials) => {
+      if (logincredentials) {
+        resolve(logincredentials);
       } else {
-        reject(new Error('Not a valid proposal id'));
+        reject(new Error('Not a valid people id'));
       }
     }).catch((err) => {
       console.log(err);
@@ -39,8 +40,8 @@ proposalMethods.findById = (project_id) => {
   });
 };
 
-proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
-  models.proposal.findAll()
+loginCredentialsMethods.getAllLoginCredentials = () => new Promise((resolve,reject) => {
+  models.login_credentials.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -50,13 +51,10 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
-
-
-proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
-
-  models.proposal.update(data, {
+loginCredentialsMethods.updateLoginCredentials = (info, data) => new Promise((resolve, reject) => {
+  models.login_credentials.update(data, {
     where: {
-      project_id: info.project_id,
+      people_id: info.people_id,
     },
   })
     .then((updated) => {
@@ -73,10 +71,10 @@ proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) =
 
 
 
-proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
-  models.proposal.destroy({
+loginCredentialsMethods.deleteLoginCredentials = info => new Promise((resolve,reject) => {
+  models.login_credentials.destroy({
     where: {
-      project_id: info.project_id,
+      people_id: info.people_id,
 
     },
   }).then((deleted) => {
@@ -89,7 +87,6 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
   }).catch((err) => {
     reject(err);
   });
-
 });
 
-module.exports = proposalMethods
+module.exports = loginCredentialsMethods;

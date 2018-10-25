@@ -40,8 +40,8 @@ proposal.updateProposal({
   data:{},
   start_date:"2201-12-18",
   duration:1000
-
-},{
+},
+{
 	project_id:3,
   file_no:"blah",
   name:"mazznga",
