@@ -20,18 +20,18 @@ headsUnderProjectMethods.addHeadsUnderProject = (info) => {
 };
 
 // findid
-headsUnderProjectMethods.findById = (project_id) => {
+headsUnderProjectMethods.findById = (head_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.proposal.findAll({
+    models.heads_under_project.findAll({
       where:
-      { project_id },
+      { head_id },
 
-    }).then((proposals) => {
-      if (proposals) {
-        resolve(proposals);
+    }).then((heads) => {
+      if (heads) {
+        resolve(heads);
       } else {
-        reject(new Error('Not a valid proposal id'));
+        reject(new Error('Not a valid head id'));
       }
     }).catch((err) => {
       console.log(err);
@@ -40,9 +40,9 @@ headsUnderProjectMethods.findById = (project_id) => {
   });
 };
 
-headsUnderProjectMethods.getAllProposals = () => new Promise((resolve,
+headsUnderProjectMethods.getAllheads = () => new Promise((resolve,
   reject) => {
-  models.proposal.findAll()
+  models.heads.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -52,12 +52,12 @@ headsUnderProjectMethods.getAllProposals = () => new Promise((resolve,
     });
 });
 
-headsUnderProjectMethods.updateProposal = (info, data) => new Promise((
-  resolve, reject,
+headsUnderProjectMethods.updateheads = (info, data) => new Promise((
+  resolve, reject
 ) => {
-  models.proposal.update(data, {
+  models.heads.update(data, {
     where: {
-      project_id: info.project_id,
+      head_id: info.head_id,
     },
   })
     .then((updated) => {
@@ -74,13 +74,11 @@ headsUnderProjectMethods.updateProposal = (info, data) => new Promise((
 
 
 
-headsUnderProjectMethods.deleteProposal = info => new Promise((
-  resolve,
-  reject,
-) => {
-  models.proposal.destroy({
+headsUnderProjectMethods.deleteheads = info => new Promise((
+  resolve,reject) => {
+  models.heads.destroy({
     where: {
-      project_id: info.project_id,
+      head_id: info.head_id,
 
     },
   }).then((deleted) => {
