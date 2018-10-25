@@ -50,7 +50,10 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
+
+
 proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
+
   models.proposal.update(data, {
     where: {
       project_id: info.project_id,
@@ -86,6 +89,7 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
   }).catch((err) => {
     reject(err);
   });
+
 });
 
-module.exports = proposalMethods;
+module.exports = proposalMethods

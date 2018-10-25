@@ -58,7 +58,7 @@ parametersunderheadsMethods.addParametersunderheads = (info) => {
  parametersunderheadsMethods.updateParametersunderheads = (info, data) => new Promise((resolve, reject) => {
   models.parameters_under_heads.update(data, {
     where: {
-      parameter_id: info.people_id,
+      parameter_id: info.parameter_id,
     },
   })
     .then((updated) => {
@@ -75,13 +75,11 @@ parametersunderheadsMethods.addParametersunderheads = (info) => {
 
 
 
- peopleMethods.deletePeople = info => new Promise((
-  resolve,
-  reject,
-) => {
-  models.people.destroy({
+ parametersunderheadsMethods.deleteParameterunderheads = info => new Promise((resolve,reject) => {
+  models.parameters_under_heads.destroy({
     where: {
-      people_id: info.people_id,
+      head_id: info.head_id,
+      parameter_id: info.parameter_id,
 
     },
   }).then((deleted) => {
@@ -96,4 +94,4 @@ parametersunderheadsMethods.addParametersunderheads = (info) => {
   });
 });
 
-module.exports =  peopleMethods;
+module.exports =  parametersunderheadsMethods;
