@@ -2,7 +2,8 @@ const methods = {};
 
 methods.proposal = require('./proposal');
 // methods.people = require('./people');
-// methods.headsUnderProject = require('./heads_under_project');
+methods.headsUnderProject = require('./heads_under_project');
+
 methods.heads = require('./heads');
 // methods.loginCreden
 // tials = require('./login_credentials');
@@ -33,25 +34,25 @@ var request = require('./request');
 // }).then(function(result){
 //   console.log(result);
 // });
-proposal.updateProposal({
-	project_id:3,
-  file_no:"./",
-  name:"manga",
-  data:{},
-  start_date:"2201-12-18",
-  duration:1000
-},
-{
-	project_id:3,
-  file_no:"blah",
-  name:"mazznga",
-  data:{},
-  start_date:"2201-12-18",
-  duration:1000
+// proposal.updateProposal({
+// 	project_id:3,
+//   file_no:"./",
+//   name:"manga",
+//   data:{},
+//   start_date:"2201-12-18",
+//   duration:1000
+// },
+// {
+// 	project_id:3,
+//   file_no:"blah",
+//   name:"mazznga",
+//   data:{},
+//   start_date:"2201-12-18",
+//   duration:1000
 
-}).then(function(result){
-	console.log(result);
-});
+// }).then(function(result){
+// 	console.log(result);
+// });
 
 //FIND BY ID
 // proposal.findById(3).then(function(result){
@@ -129,17 +130,18 @@ proposal.updateProposal({
 // });
 
 // //CREATE
-request.addRequest({
-  request_id:30,
-  project_id : 1,
-  description: "First request is being submitted",
-  date: "2018-02-11",
-  approval_level: 0,
-  estimated_amount : 1200.00,
-  remark: {}
-}).then(function(result){
-  console.log(result);
-});
+// request.addRequest({
+//   request_id:30,
+//   project_id : 1,
+//   head_id:1,
+//   description: "First request is being submitted",
+//   date: "2018-02-11",
+//   approval_level: 0,
+//   estimated_amount : 1200.00,
+//   remark: {}
+// }).then(function(result){
+//   console.log(result);
+// });
 
 // //FIND BY ID
 // request.findById(1).then(function(result){

@@ -21,7 +21,6 @@ loginCredentialsMethods.addLoginCredentials = (info) => {
 
 // findid
 loginCredentialsMethods.findById = (people_id) => {
-  // console.log('finding by id');
   return new Promise((resolve, reject) => {
     models.login_credentials.findAll({
       where:

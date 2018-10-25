@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
+const methods = require('../../methods/heads_under_project')
 
 const requestMethods = {};
 
@@ -19,9 +20,9 @@ const requestMethods = {};
 //   });
 // };
 
-requestMethods.addRequest = (function(info){
+requestMethods.addRequest = function(info){
   return new Promise(function(resolve,reject){
-    models.heads_under_project.findById(info.project_id,info.head_id)
+    methods.findById(info.head_id)
     .then(function(result){
       console.log(result);
   }).catch(function(err){
@@ -30,7 +31,7 @@ requestMethods.addRequest = (function(info){
   });
   
 
-})
+}
 // findid
 requestMethods.findById = (request_id) => {
   // console.log('finding by id');

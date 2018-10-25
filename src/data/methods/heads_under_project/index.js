@@ -21,7 +21,6 @@ headsUnderProjectMethods.addHeadsUnderProject = (info) => {
 
 // findid
 headsUnderProjectMethods.findById = (head_id) => {
-  // console.log('finding by id');
   return new Promise((resolve, reject) => {
     models.heads_under_project.findAll({
       where:
