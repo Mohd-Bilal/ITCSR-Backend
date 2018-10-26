@@ -1,13 +1,10 @@
 const Promise = require('bluebird');
 var heads = require('./heads');
-<<<<<<< HEAD
 const models = require('../models');
 
 var Sequelize = require('sequelize');
 
 var {sequelize} = models;
-=======
->>>>>>> 54e37eb082edc87f5246c9126f7f3b8bc5fd9129
 var proposal = require('./proposal');
 var people = require('./people');
 var request = require('./request');
@@ -17,27 +14,25 @@ var purchaseUnderProject = require('./purchase_under_project');
 //TEST
 
 // CREATE
-<<<<<<< HEAD
-return sequelize.transaction(function(t){
+// return sequelize.transaction(function(t){
   
-  return proposal.addProposals({
-  project_id:3,
-  file_no:"./",
-  name:"manga",
-  data:{},
-  start_date:"2201-12-18",
-  duration:1000
-},t).then(function(result){
-  return result;
-});
-}).then(function(result){
-  console.log("transaction kazhinj");
-})
-.catch(function(err){
-  console.log("transaction moonj");
+//   return proposal.addProposals({
+//   project_id:3,
+//   file_no:"./",
+//   name:"manga",
+//   data:{},
+//   start_date:"2201-12-18",
+//   duration:1000
+// },t).then(function(result){
+//   return result;
+// });
+// }).then(function(result){
+//   console.log("transaction kazhinj");
+// })
+// .catch(function(err){
+//   console.log("transaction moonj");
 
-});
-=======
+// });
 // proposal.addProposals({
 //   project_id:1,
 //   file_no:"./",
@@ -50,7 +45,6 @@ return sequelize.transaction(function(t){
 //   console.log(result);
 // });
 
->>>>>>> 54e37eb082edc87f5246c9126f7f3b8bc5fd9129
 // proposal.updateProposal({
 // 	project_id:3,
 //   file_no:"./",
@@ -111,6 +105,9 @@ return sequelize.transaction(function(t){
 //   });
 // });
 
+headsUnderProject.updateSpent(1,1,20).then(function(result){
+  console.log(result)
+});
 // heads.deleteHeads({head_id:0}).then(function(result){
 // console.log(result);
 // }).catch(function(result){
@@ -261,3 +258,5 @@ return sequelize.transaction(function(t){
 //   purchaseUnderProject.deletePurchaseUnderProject({order_no:1}).then(function(result){
 //   console.log(result);
 //   });
+
+
