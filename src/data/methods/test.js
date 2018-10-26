@@ -1,18 +1,23 @@
 const Promise = require('bluebird');
 var heads = require('./heads');
+<<<<<<< HEAD
 const models = require('../models');
 
 var Sequelize = require('sequelize');
 
 var {sequelize} = models;
+=======
+>>>>>>> 54e37eb082edc87f5246c9126f7f3b8bc5fd9129
 var proposal = require('./proposal');
 var people = require('./people');
 var request = require('./request');
 var headsUnderProject = require('./heads_under_project');
+var purchaseUnderProject = require('./purchase_under_project');
 
 //TEST
 
 // CREATE
+<<<<<<< HEAD
 return sequelize.transaction(function(t){
   
   return proposal.addProposals({
@@ -32,6 +37,20 @@ return sequelize.transaction(function(t){
   console.log("transaction moonj");
 
 });
+=======
+// proposal.addProposals({
+//   project_id:1,
+//   file_no:"./",
+//   name:"manga",
+//   data:{},
+//   start_date:"2201-12-18",
+//   duration:1000
+
+// }).then(function(result){
+//   console.log(result);
+// });
+
+>>>>>>> 54e37eb082edc87f5246c9126f7f3b8bc5fd9129
 // proposal.updateProposal({
 // 	project_id:3,
 //   file_no:"./",
@@ -149,32 +168,33 @@ return sequelize.transaction(function(t){
   // console.log(result);
   // });
   
-  //GET ALL
-  // request.getAllRequests().then(function(result){
-  //   result.forEach(function(row){
-  //     console.log(row.get('request_id'));
-  //   });
-  // });
-  // //DELETE
-  // request.deleteRequest({request_id:0}).then(function(result){
-  // console.log(result);
-  // });
-  // //UPDATE REQUEST
-  // request.updateRequest({request_id:0,
-  //   project_id : 1,
-  //   description: "First request is being submitted",
-  //   date: "2018-02-11",
-  //   approval_level: 0,
-  //   estimated_amount : 1200.00,
-  //   remark: {}},{request_id:0,
-  //   project_id : 1,
-  //   description: "First request is being submitted",
-  //   date: "2018-02-11",
-  //   approval_level: 2,
-  //   estimated_amount : 1200.00,
-  //   remark: {}}).then(function(result){
-  // console.log(result);
-  // });
+//   GET ALL
+//   request.getAllRequests().then(function(result){
+//     result.forEach(function(row){
+//       console.log(row.get('request_id'));
+//     });
+//   });
+//    DELETE
+//   request.deleteRequest({request_id:0}).then(function(result){
+//   console.log(result);
+//   });
+//   //UPDATE REQUEST
+//   request.updateRequest({request_id:0,
+//     project_id : 1,
+//     description: "First request is being submitted",
+//     date: "2018-02-11",
+//     approval_level: 0,
+//     estimated_amount : 1200.00,
+//     remark: {}},
+//     {request_id:0,
+//     project_id : 1,
+//     description: "First request is being submitted",
+//     date: "2018-02-11",
+//     approval_level: 2,
+//     estimated_amount : 1200.00,
+//     remark: {}}).then(function(result){
+//   console.log(result);
+//   });
   
   // headsUnderProject.addNewHeadUnderProject({
   //     project_id:1,
@@ -185,7 +205,59 @@ return sequelize.transaction(function(t){
   //     console.log(result);
   // });     
   
-  // //FIND BY ID
-  // headsUnderProject.findById(1,1).then(function(result){
-  // console.log(result);
-  // });
+//   FIND BY ID
+//   headsUnderProject.findById(1,1).then(function(result){
+//   console.log(result);
+//   });
+
+
+  // ADD PURCHASE UNDER PROJECT
+//   purchaseUnderProject.addPurchaseUnderProject({
+//     order_no:1,
+//     project_id:1,
+//     head_id:1,
+//     data:{},
+//     price:100,
+//     date_of_purchase:"2201-12-18",
+//     count:1
+//   }).then(function(result){
+//     console.log(result);
+//   });
+
+  //FIND BY ID
+//   purchaseUnderProject.findById(1).then(function(result){
+//   console.log(result);
+//   });
+
+//  // GET ALL
+//   purchaseUnderProject.getAllPurchaseUnderProject().then(function(result){
+//     result.forEach(function(row){
+//       console.log(row.get('order_no'));
+//     });
+//   });
+
+//UPDATE PURCHASE UNDER PROJECT
+// purchaseUnderProject.updatePurchaseUnderProject({
+//     order_no:1,
+//     project_id:1,
+//     head_id:1,
+//     data:{},
+//     price:100,
+//     date_of_purchase:"2201-12-18",
+//     count:1
+//     },
+//     {order_no:1,
+//         project_id:1,
+//         head_id:1,
+//         data:{},
+//         price:150,
+//         date_of_purchase:"2201-12-18",
+//         count:1
+//     }).then(function(result){
+//   console.log(result);
+//   });
+
+  //DELETE
+//   purchaseUnderProject.deletePurchaseUnderProject({order_no:1}).then(function(result){
+//   console.log(result);
+//   });
