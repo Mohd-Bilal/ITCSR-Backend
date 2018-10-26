@@ -7,4 +7,5 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/proposal',require('./proposal'))
+router.use('/heads',require('./heads'))
 module.exports = router;
