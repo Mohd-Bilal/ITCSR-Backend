@@ -1,19 +1,16 @@
 const methods = {};
 
 methods.proposal = require('./proposal');
-<<<<<<< HEAD
 methods.people = require('./people');
 // methods.headsUnderProject = require('./heads_under_project');
 // methods.heads = require('./heads');
 // methods.loginCredentials = require('./login_credentials');
-=======
 // methods.people = require('./people');
 methods.headsUnderProject = require('./heads_under_project');
 
 methods.heads = require('./heads');
 // methods.loginCreden
 // tials = require('./login_credentials');
->>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
 // methods.people = require('./people');
 // methods.purchaseUnderProject = require('./purchase_under_project');
 methods.request = require('./request');
