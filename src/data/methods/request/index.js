@@ -2,30 +2,63 @@ const Promise = require('bluebird');
 
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
-const methods = require('../../methods/heads_under_project')
+const methods = require('../../methods/');
 
 const requestMethods = {};
 
 // requestMethods.addRequest = (info) => {
 //   console.log('inside adding requests');
-//   return new Promise((resolve, reject) => {
-//     models.request.create(info)
-//       .then((result) => {
-//         resolve(result);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         reject(err);
-//       });
-//   });
+  // return new Promise((resolve, reject) => {
+    // models.request.create(info)
+    //   .then((result) => {
+    //     resolve(result);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     reject(err);
+    //   });
+  // });
 // };
 
 requestMethods.addRequest = function(info){
+  // const fund;
+  // const spent;
+
   return new Promise(function(resolve,reject){
-    methods.findById(info.head_id)
+
+    methods.headsUnderProject.findById(info.head_id,info.project_id)
     .then(function(result){
-      console.log(result);
-  }).catch(function(err){
+      var fund,spent;
+      //bad implementation, change!
+      result.forEach(function(row){
+          // console.log(row.get('project_id'));
+          fund = row.get('fund');
+          spent = row.get('spent');
+          // console.log()
+      });
+
+      if(info.estimated_amount<(fund-spent)){
+          console.log("resolved");
+          return "ethi";
+      }
+      else{
+          console.log("rejected");
+          throw new Error();
+      }
+
+  })
+  .then(function(res){
+    console.log("ethi"+res);
+    models.request.create(info)
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      reject(err);
+    });
+  })
+  .catch(function(err){
     reject(err);
   });
   });

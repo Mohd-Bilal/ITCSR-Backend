@@ -5,10 +5,10 @@ const models = require('../../models');
 
 const headsUnderProjectMethods = {};
 
-headsUnderProjectMethods.addNewExpense = (info) => {
-  console.log('inside adding people');
+headsUnderProjectMethods.addNewHeadUnderProject = (info) => {
+  console.log('inside adding head under project');
   return new Promise((resolve, reject) => {
-    models.people.create(info)
+    models.heads_under_project.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -20,18 +20,20 @@ headsUnderProjectMethods.addNewExpense = (info) => {
 };
 
 // findid
-peopleMethods.findById = (people_id) => {
+headsUnderProjectMethods.findById = (project_id,head_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.people.findAll({
+    models.heads_under_project.findAll({
       where:
-      { people_id },
+      { project_id,
+        head_id
+      },
 
-    }).then((people) => {
-      if (people) {
-        resolve(people);
+    }).then((result) => {
+      if (result) {
+        resolve(result);
       } else {
-        reject(new Error('Not a valid  person id'));
+        reject(new Error('Not a valid  id'));
       }
     }).catch((err) => {
       console.log(err);
@@ -40,9 +42,9 @@ peopleMethods.findById = (people_id) => {
   });
 };
 
- peopleMethods.getAllPeople = () => new Promise((resolve,
+ headsUnderProjectMethods.getAllHeadsUnderProject= () => new Promise((resolve,
   reject) => {
-  models.people.findAll()
+  models.heads_under_project.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -52,12 +54,13 @@ peopleMethods.findById = (people_id) => {
     });
 });
 
- peopleMethods.updatePeople = (info, data) => new Promise((
-  resolve, reject,
+ headsUnderProjectMethods.updateHeadsUnderProject = (info, data) => new Promise((
+  resolve, reject
 ) => {
-  models.people.update(data, {
+  models.heads_under_project.update(data, {
     where: {
-      people_id: info.people_id,
+      project_id: info.project_id,
+      head_id: info.head_id
     },
   })
     .then((updated) => {
@@ -74,13 +77,11 @@ peopleMethods.findById = (people_id) => {
 
 
 
- peopleMethods.deletePeople = info => new Promise((
-  resolve,
-  reject,
-) => {
-  models.people.destroy({
+ headsUnderProjectMethods.deleteHeadsUnderProject = info => new Promise((resolve,reject) => {
+  models.heads_under_project.destroy({
     where: {
-      people_id: info.people_id,
+      head_id: info.head_id,
+      project_id: info.project_id
 
     },
   }).then((deleted) => {
@@ -95,4 +96,4 @@ peopleMethods.findById = (people_id) => {
   });
 });
 
-module.exports =  peopleMethods;
+module.exports =  headsUnderProjectMethods;
