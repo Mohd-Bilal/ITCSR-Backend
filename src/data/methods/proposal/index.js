@@ -5,9 +5,9 @@ const models = require('../../models');
 
 const proposalMethods = {};
 
-proposalMethods.addProposals = (info) => {
+proposalMethods.addProposals = (info,t) => {
   return new Promise((resolve, reject) => {
-    models.proposal.create(info)
+    models.proposal.create(info,{transaction:t})
       .then((result) => {
         resolve(result);
       })

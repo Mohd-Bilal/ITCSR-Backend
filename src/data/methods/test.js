@@ -1,6 +1,10 @@
-
+const Promise = require('bluebird');
 var heads = require('./heads');
+const models = require('../models');
 
+var Sequelize = require('sequelize');
+
+var {sequelize} = models;
 var proposal = require('./proposal');
 var people = require('./people');
 var request = require('./request');
@@ -9,17 +13,25 @@ var headsUnderProject = require('./heads_under_project');
 //TEST
 
 // CREATE
-// proposal.addProposals({
-//   project_id:1,
-//   file_no:"./",
-//   name:"manga",
-//   data:{},
-//   start_date:"2201-12-18",
-//   duration:1000
+return sequelize.transaction(function(t){
+  
+  return proposal.addProposals({
+  project_id:3,
+  file_no:"./",
+  name:"manga",
+  data:{},
+  start_date:"2201-12-18",
+  duration:1000
+},t).then(function(result){
+  return result;
+});
+}).then(function(result){
+  console.log("transaction kazhinj");
+})
+.catch(function(err){
+  console.log("transaction moonj");
 
-// }).then(function(result){
-//   console.log(result);
-// });
+});
 // proposal.updateProposal({
 // 	project_id:3,
 //   file_no:"./",
@@ -116,21 +128,21 @@ var headsUnderProject = require('./heads_under_project');
 // });
 
 // //CREATE
-request.addRequest({
-    request_id:30,
-    project_id : 1,
-    head_id:1,
-    description: "First request is being submitted",
-    date: "2018-02-11",
-    approval_level: 0,
-    estimated_amount : 1000.00,
-    remark: {}
-  }).then(function(result){
-    console.log(result);
-  })
-  .catch(function(err){
-    console.log("fund exceeded");
-  });
+// request.addRequest({
+//     request_id:30,
+//     project_id : 1,
+//     head_id:1,
+//     description: "First request is being submitted",
+//     date: "2018-02-11",
+//     approval_level: 0,
+//     estimated_amount : 1000.00,
+//     remark: {}
+//   }).then(function(result){
+//     console.log(result);
+//   })
+//   .catch(function(err){
+//     console.log("fund exceeded");
+//   });
   
   // //FIND BY ID
   // request.findById(1).then(function(result){
