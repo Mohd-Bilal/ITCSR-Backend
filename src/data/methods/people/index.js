@@ -29,7 +29,11 @@ peopleMethods.findById = (people_id) => {
 
     }).then((people) => {
       if (people) {
+
+        resolve( people);
+
         resolve(people);
+
       } else {
         reject(new Error('Not a valid  person id'));
       }
@@ -40,8 +44,7 @@ peopleMethods.findById = (people_id) => {
   });
 };
 
- peopleMethods.getAllPeople = () => new Promise((resolve,
-  reject) => {
+ peopleMethods.getAllPeople = () => new Promise((resolve,reject) => {
   models.people.findAll()
     .then((result) => {
       resolve(result);
@@ -52,9 +55,7 @@ peopleMethods.findById = (people_id) => {
     });
 });
 
- peopleMethods.updatePeople = (info, data) => new Promise((
-  resolve, reject,
-) => {
+ peopleMethods.updatePeople = (info, data) => new Promise((resolve, reject) => {
   models.people.update(data, {
     where: {
       people_id: info.people_id,
@@ -74,10 +75,7 @@ peopleMethods.findById = (people_id) => {
 
 
 
- peopleMethods.deletePeople = info => new Promise((
-  resolve,
-  reject,
-) => {
+ peopleMethods.deletePeople = info => new Promise((resolve,reject) => {
   models.people.destroy({
     where: {
       people_id: info.people_id,

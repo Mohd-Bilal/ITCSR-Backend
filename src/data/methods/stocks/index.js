@@ -3,11 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const proposalMethods = {};
+const stocksMethods = {};
 
-proposalMethods.addProposals = (info) => {
+stocksMethods.addStocks = (info) => {
+  console.log('inside adding stocks');
   return new Promise((resolve, reject) => {
-    models.proposal.create(info)
+    models.stocks.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -18,19 +19,20 @@ proposalMethods.addProposals = (info) => {
   });
 };
 
+
 // findid
-proposalMethods.findById = (project_id) => {
+stocksMethods.findById = (stock_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.proposal.findAll({
+    models.stocks.findAll({
       where:
-      { project_id },
+      { stock_id },
 
-    }).then((proposals) => {
-      if (proposals) {
-        resolve(proposals);
+    }).then((stocks) => {
+      if (stocks) {
+        resolve( stocks);
       } else {
-        reject(new Error('Not a valid proposal id'));
+        reject(new Error('Not a valid  stock'));
       }
     }).catch((err) => {
       console.log(err);
@@ -39,8 +41,10 @@ proposalMethods.findById = (project_id) => {
   });
 };
 
-proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
-  models.proposal.findAll()
+
+ stocksMethods.getAllStocks = () => new Promise((resolve,
+  reject) => {
+  models.stocks.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -50,13 +54,12 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
-
-
-proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
-
-  models.proposal.update(data, {
+ stocksMethods.updateStock = (info, data) => new Promise((
+  resolve, reject,
+) => {
+  models.stocks.update(data, {
     where: {
-      project_id: info.project_id,
+      stock_id: info.stock_id,
     },
   })
     .then((updated) => {
@@ -72,11 +75,13 @@ proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) =
 });
 
 
-
-proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
-  models.proposal.destroy({
+ stocksMethods.deleteStock = info => new Promise((
+  resolve,
+  reject,
+) => {
+  models.stocks.destroy({
     where: {
-      project_id: info.project_id,
+      stock_id: info.stock_id,
 
     },
   }).then((deleted) => {
@@ -89,7 +94,6 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
   }).catch((err) => {
     reject(err);
   });
-
 });
 
-module.exports = proposalMethods
+module.exports =  stocksMethods;

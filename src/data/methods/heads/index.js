@@ -3,11 +3,12 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const proposalMethods = {};
+const headsMethods = {};
 
-proposalMethods.addProposals = (info) => {
+headsMethods.addHeads = (info) => {
+  console.log('inside adding heads');
   return new Promise((resolve, reject) => {
-    models.proposal.create(info)
+    models.heads.create(info)
       .then((result) => {
         resolve(result);
       })
@@ -19,18 +20,18 @@ proposalMethods.addProposals = (info) => {
 };
 
 // findid
-proposalMethods.findById = (project_id) => {
+headsMethods.findById = (head_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.proposal.findAll({
+    models.heads.findAll({
       where:
-      { project_id },
+      { head_id },
 
-    }).then((proposals) => {
-      if (proposals) {
-        resolve(proposals);
+    }).then((headss) => {
+      if (headss) {
+        resolve(headss);
       } else {
-        reject(new Error('Not a valid proposal id'));
+        reject(new Error('Not a valid head id'));
       }
     }).catch((err) => {
       console.log(err);
@@ -39,8 +40,8 @@ proposalMethods.findById = (project_id) => {
   });
 };
 
-proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
-  models.proposal.findAll()
+headsMethods.getAllHeads = () => new Promise((resolve,reject) => {
+  models.heads.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -50,13 +51,10 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
-
-
-proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
-
-  models.proposal.update(data, {
+headsMethods.updateHeads = (info, data) => new Promise((resolve, reject) => {
+  models.heads.update(data, {
     where: {
-      project_id: info.project_id,
+      head_id: info.head_id,
     },
   })
     .then((updated) => {
@@ -73,10 +71,10 @@ proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) =
 
 
 
-proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
-  models.proposal.destroy({
+headsMethods.deleteHeads = info => new Promise((resolve,reject) => {
+  models.heads.destroy({
     where: {
-      project_id: info.project_id,
+      head_id: info.head_id,
 
     },
   }).then((deleted) => {
@@ -89,7 +87,6 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
   }).catch((err) => {
     reject(err);
   });
-
 });
 
-module.exports = proposalMethods
+module.exports = headsMethods;

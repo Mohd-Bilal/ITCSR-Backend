@@ -5,10 +5,17 @@ const models = require('../../models');
 
 const headsUnderProjectMethods = {};
 
+<<<<<<< HEAD
 headsUnderProjectMethods.addNewExpense = (info) => {
   console.log('inside adding people');
   return new Promise((resolve, reject) => {
     models.people.create(info)
+=======
+headsUnderProjectMethods.addHeadsUnderProject = (info) => {
+  console.log('inside adding heads under project');
+  return new Promise((resolve, reject) => {
+    models.heads_under_project.create(info)
+>>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
       .then((result) => {
         resolve(result);
       })
@@ -20,6 +27,7 @@ headsUnderProjectMethods.addNewExpense = (info) => {
 };
 
 // findid
+<<<<<<< HEAD
 peopleMethods.findById = (people_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
@@ -32,6 +40,19 @@ peopleMethods.findById = (people_id) => {
         resolve(people);
       } else {
         reject(new Error('Not a valid  person id'));
+=======
+headsUnderProjectMethods.findById = (head_id) => {
+  return new Promise((resolve, reject) => {
+    models.heads_under_project.findAll({
+      where:
+      { head_id },
+
+    }).then((heads) => {
+      if (heads) {
+        resolve(heads);
+      } else {
+        reject(new Error('Not a valid head id'));
+>>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
       }
     }).catch((err) => {
       console.log(err);
@@ -40,9 +61,15 @@ peopleMethods.findById = (people_id) => {
   });
 };
 
+<<<<<<< HEAD
  peopleMethods.getAllPeople = () => new Promise((resolve,
   reject) => {
   models.people.findAll()
+=======
+headsUnderProjectMethods.getAllheads = () => new Promise((resolve,
+  reject) => {
+  models.heads.findAll()
+>>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
     .then((result) => {
       resolve(result);
     })
@@ -52,12 +79,21 @@ peopleMethods.findById = (people_id) => {
     });
 });
 
+<<<<<<< HEAD
  peopleMethods.updatePeople = (info, data) => new Promise((
   resolve, reject,
 ) => {
   models.people.update(data, {
     where: {
       people_id: info.people_id,
+=======
+headsUnderProjectMethods.updateheads = (info, data) => new Promise((
+  resolve, reject
+) => {
+  models.heads.update(data, {
+    where: {
+      head_id: info.head_id,
+>>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
     },
   })
     .then((updated) => {
@@ -74,6 +110,7 @@ peopleMethods.findById = (people_id) => {
 
 
 
+<<<<<<< HEAD
  peopleMethods.deletePeople = info => new Promise((
   resolve,
   reject,
@@ -81,6 +118,13 @@ peopleMethods.findById = (people_id) => {
   models.people.destroy({
     where: {
       people_id: info.people_id,
+=======
+headsUnderProjectMethods.deleteheads = info => new Promise((
+  resolve,reject) => {
+  models.heads.destroy({
+    where: {
+      head_id: info.head_id,
+>>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
 
     },
   }).then((deleted) => {
@@ -95,4 +139,8 @@ peopleMethods.findById = (people_id) => {
   });
 });
 
+<<<<<<< HEAD
 module.exports =  peopleMethods;
+=======
+module.exports = headsUnderProjectMethods;
+>>>>>>> 2c46848d059cb415e24a84fdf0fb16ec41183fbc
