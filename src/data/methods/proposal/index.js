@@ -56,7 +56,7 @@ proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) =
 
   models.proposal.update(data, {
     where: {
-      project_id: info.project_id,
+      project_id: info,
     },
   })
     .then((updated) => {

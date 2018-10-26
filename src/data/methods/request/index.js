@@ -6,20 +6,6 @@ const methods = require('../../methods/heads_under_project')
 
 const requestMethods = {};
 
-// requestMethods.addRequest = (info) => {
-//   console.log('inside adding requests');
-//   return new Promise((resolve, reject) => {
-//     models.request.create(info)
-//       .then((result) => {
-//         resolve(result);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         reject(err);
-//       });
-//   });
-// };
-
 requestMethods.addRequest = function(info){
   return new Promise(function(resolve,reject){
     methods.findById(info.head_id)

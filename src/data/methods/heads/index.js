@@ -54,7 +54,7 @@ headsMethods.getAllHeads = () => new Promise((resolve,reject) => {
 headsMethods.updateHeads = (info, data) => new Promise((resolve, reject) => {
   models.heads.update(data, {
     where: {
-      head_id: info.head_id,
+      head_id: info
     },
   })
     .then((updated) => {

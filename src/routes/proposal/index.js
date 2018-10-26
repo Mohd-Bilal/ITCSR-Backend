@@ -18,6 +18,24 @@ router.post('/update',function(req,res){
     const proposalId = req.body.proposal_id;
     const info = req.body.info;
     const data = req.body.update;
+    console.log(req.body)
+    methods.updateProposal(info,data)
+    .then(function(result){
+        res.json({
+            "success":true,
+            "status":result
+        })
+    }).catch(function(err){
+        console.log(err)
+        res.json({
+            "success":false,
+            "status":err
+        })
+    })
+})
+
+router.post('/delete',function(req,res){
+    
 })
 
 module.exports = router;
