@@ -8,7 +8,7 @@ router.get('/',function(req,res){
 })
 
 router.post('/create',function(req,res){
-    const info  = req.body.info
+    const info  = req.body
     methods.addHeads(info).then((result) => {
         res.json({
             "success":true,
