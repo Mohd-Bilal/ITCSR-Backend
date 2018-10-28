@@ -53,7 +53,60 @@ headsUnderProjectMethods.findById = (project_id,head_id) => {
       reject(err);
     });
 });
+headsUnderProjectMethods.updateSpent = function(head_id,project_id,expense){
+  return new Promise(function(resolve,reject){
 
+    headsUnderProjectMethods.findById(head_id,project_id)
+    .then(function(result){
+      var spent,fund;
+      //bad implementation, change!
+      result.forEach(function(row){
+          spent = row.get('spent');
+          fund = row.get('fund'); 
+      });
+
+      if(expense+spent<fund){
+          console.log("resolved");
+          spent = spent+expense;
+          var p ={};
+          p["fund"] = fund;
+          p["spent"] = spent;
+          return p;
+      }
+      else{
+          console.log("rejected");
+          throw new Error();
+      }
+
+  })
+  .then(function(p){
+    console.log("ethi"+p.spent);
+    models.heads_under_project.update({
+      project_id:project_id,
+      head_id:head_id,
+      fund:p.fund,
+      spent:p.spent
+    },
+      {
+        where: {
+          project_id: project_id,
+          head_id: head_id
+        }}
+      )
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      reject(err);
+    });
+  })
+  .catch(function(err){
+    reject(err);
+  });
+  });
+  
+}
  headsUnderProjectMethods.updateHeadsUnderProject = (info, data) => new Promise((
   resolve, reject
 ) => {

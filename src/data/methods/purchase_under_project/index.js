@@ -3,15 +3,16 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 
-const proposalMethods = {};
+const purchaseUnderProjectMethods = {};
 
-proposalMethods.addProposals = (info,t) => {
+purchaseUnderProjectMethods.addPurchaseUnderProject = (info) => {
+  console.log('inside adding purchase under project');
   return new Promise((resolve, reject) => {
-    models.proposal.create(info,{transaction:t})
+    models.purchase_under_project.create(info)
       .then((result) => {
         resolve(result);
-      })
-      .catch((err) => {
+
+      }).catch((err) => {
         console.log(err);
         reject(err);
       });
@@ -19,18 +20,18 @@ proposalMethods.addProposals = (info,t) => {
 };
 
 // findid
-proposalMethods.findById = (project_id) => {
+purchaseUnderProjectMethods.findById = (order_no) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
-    models.proposal.findAll({
+    models.purchase_under_project.findAll({
       where:
-      { project_id },
+      { order_no },
 
-    }).then((proposals) => {
-      if (proposals) {
-        resolve(proposals);
+    }).then((result) => {
+      if (result) {
+        resolve( result);
       } else {
-        reject(new Error('Not a valid proposal id'));
+        reject(new Error('Not a valid order no'));
       }
     }).catch((err) => {
       console.log(err);
@@ -39,8 +40,8 @@ proposalMethods.findById = (project_id) => {
   });
 };
 
-proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
-  models.proposal.findAll()
+ purchaseUnderProjectMethods.getAllPurchaseUnderProject = () => new Promise((resolve,reject) => {
+  models.purchase_under_project.findAll()
     .then((result) => {
       resolve(result);
     })
@@ -50,13 +51,10 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
-
-
-proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
-
-  models.proposal.update(data, {
+ purchaseUnderProjectMethods.updatePurchaseUnderProject= (info, data) => new Promise((resolve, reject) => {
+  models.purchase_under_project.update(data, {
     where: {
-      project_id: info,
+      order_no: info.order_no,
     },
   })
     .then((updated) => {
@@ -73,10 +71,10 @@ proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) =
 
 
 
-proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
-  models.proposal.destroy({
+ purchaseUnderProjectMethods.deletePurchaseUnderProject = info => new Promise((resolve,reject) => {
+  models.purchase_under_project.destroy({
     where: {
-      project_id: info.project_id,
+      order_no: info.order_no,
 
     },
   }).then((deleted) => {
@@ -89,7 +87,6 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
   }).catch((err) => {
     reject(err);
   });
-
 });
 
-module.exports = proposalMethods
+module.exports =  purchaseUnderProjectMethods;

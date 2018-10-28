@@ -7,6 +7,18 @@ router.get('/',function(req,res){
     })
 })
 
+router.get('/getAll',function(req,res){
+    headMethods.getAllHeads().then(function(result){
+        res.json({
+            "success":true,
+            "Status":result
+        });
+    }).catch((err) => {
+        res.json( {"success":false,
+         "Status":err})
+     });
+});
+
 router.post('/create',function(req,res){
     const info  = req.body
     methods.addHeads(info).then((result) => {
