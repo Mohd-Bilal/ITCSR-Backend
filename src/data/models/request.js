@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) =>
       description: DataTypes.STRING(1000),
       date: DataTypes.DATE(),
       approval_level: DataTypes.INTEGER(),
-      estimated_amount :DataTypes.DOUBLE(),
-      remark: DataTypes.JSON()
+      estimated_amount :DataTypes.DOUBLE()//,
+      //remark: DataTypes.JSON()
 
     }
   );
