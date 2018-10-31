@@ -20,7 +20,8 @@ requestMethods.addRequest = function(info){
           // console.log(row.get('project_id'));
           fund = row.get('fund');
           spent = row.get('spent');
-          // console.log()
+          // console.log(fund);
+          // console.log(spent)
       });
 
       if(info.estimated_amount<(fund-spent)){
