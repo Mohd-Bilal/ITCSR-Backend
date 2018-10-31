@@ -21,6 +21,7 @@ router.get('/getAll',function(req,res){
 
 router.post('/create',function(req,res){
     const info  = req.body
+    info["spent"] = 0; //add new head!!
     methods.addNewHeadUnderProject(info).then((result) => {
         res.json({
             "success":true,

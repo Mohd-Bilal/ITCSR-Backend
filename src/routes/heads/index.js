@@ -8,7 +8,7 @@ router.get('/',function(req,res){
 })
 
 router.get('/getAll',function(req,res){
-    headMethods.getAllHeads().then(function(result){
+    methods.getAllHeads().then(function(result){
         res.json({
             "success":true,
             "Status":result
