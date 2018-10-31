@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) =>
       project_id :
       {
         type       : DataTypes.INTEGER(),
-        primaryKey : true
+        autoIncrement: true,
+        primaryKey : true,
+        // defaultValue:'0'
       },
      
       file_no: DataTypes.STRING(45),
