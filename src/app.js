@@ -8,7 +8,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 app.use(cors({
-    origin: ['http://localhost:8080'],
+    origin: ['http://localhost:8080','http://192.168.1.12:8080'],
     credentials: true
 }))
 
