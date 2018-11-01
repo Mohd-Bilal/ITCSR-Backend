@@ -18,15 +18,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ 
-    name: 'token',
+    name: 'accessToken',
     keys: [key.COOKIE_KEY],
     secret: key.COOKIE_KEY,
     cookie: {
-        secure: true,
+        secure: false,
         httpOnly: true,
         path: '/',
         expires: '2h'
-}}))
+    }
+}))
 
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -35,18 +35,19 @@ router.post("/login", function(req, res) {
     .then(function(result) {
       if (result.success === true) {
         req.session.accessToken = result.token;
-        res.json({
+        console.log(req.session)
+        return res.json({
           "success": true
         });
       } else {
-        res.json({
+        return res.json({
           "success": false
 
         });
       }
     })
     .catch(function(err) {
-      res.json({
+      return res.json({
         "success": false,
         "error":err
       });
