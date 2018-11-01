@@ -33,7 +33,9 @@ router.post("/login", function(req, res) {
   methods
     .authenticateUser(username, password)
     .then(function(result) {
+      // console.log(result.success);
       if (result.success === true) {
+        console.log("received token ")
         req.session.accessToken = result.token;
         return res.json({
           success: true
@@ -46,8 +48,8 @@ router.post("/login", function(req, res) {
     })
     .catch(function(err) {
       return res.json({
-        success: false,
-        error: err
+        "success": false,
+        "error":err
       });
     });
 });

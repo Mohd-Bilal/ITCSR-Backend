@@ -7,8 +7,9 @@ router.get('/',function(req,res){
     })
 })
 
-router.get('/getAll',function(req,res){
-    headsUnderProjectmethods.getAllHeadsUnderProject().then(function(result){
+router.post('/getAll',function(req,res){
+    const project_id = req.body.project_id;
+    methods.getAllHeadsUnderProject(project_id).then(function(result){
         res.json({
             "success":true,
             "Status":result

@@ -10,6 +10,9 @@ var people = require('./people');
 var request = require('./request');
 var headsUnderProject = require('./heads_under_project');
 var purchaseUnderProject = require('./purchase_under_project');
+// var fs = require('fs');
+ 
+
 
 //TEST
 
@@ -33,6 +36,14 @@ var purchaseUnderProject = require('./purchase_under_project');
 //   console.log("transaction moonj");
 
 // });
+  // proposal.getAllProjectsUnderPI(1)
+  // .then(function(result){
+  //   console.log(result);
+  // })
+  // .catch(function(result){
+  //   console.log(result);
+  // })
+
 // proposal.addProposals({
 //   project_id:1,
 //   file_no:"./",
@@ -104,7 +115,12 @@ var purchaseUnderProject = require('./purchase_under_project');
 //     console.log(row.get('head_id'));
 //   });
 // });
-
+  headsUnderProject.getAllHeadsUnderProject(1).then(function(result){
+    console.log(result);
+  })
+  .catch(function(err){
+    console.log(result);
+  })
 // headsUnderProject.updateSpent(1,1,20).then(function(result){
 //   console.log(result)
 // });
@@ -144,21 +160,21 @@ var purchaseUnderProject = require('./purchase_under_project');
 // });
 
 //CREATE
-request.addRequest({
-    request_id:60,
-    project_id : 1,
-    head_id:1,
-    description: "First request is being submitted",
-    date: "2018-02-11",
-    approval_level: 0,
-    estimated_amount : 10.00,
-    remark: {}
-  }).then(function(result){
-    console.log(result);
-  })
-  .catch(function(err){
-    console.log("fund exceeded");
-  });
+// request.addRequest({
+//     request_id:60,
+//     project_id : 1,
+//     head_id:1,
+//     description: "First request is being submitted",
+//     date: "2018-02-11",
+//     approval_level: 0,
+//     estimated_amount : 10.00,
+//     remark: {}
+//   }).then(function(result){
+//     console.log(result);
+//   })
+//   .catch(function(err){
+//     console.log("fund exceeded");
+//   });
   
   // //FIND BY ID
   // request.findById(1).then(function(result){
