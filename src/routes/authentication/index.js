@@ -35,18 +35,14 @@ router.post("/login", function(req, res) {
     .then(function(result) {
       // console.log(result.success);
       if (result.success === true) {
-        console.log("received token ",result.token);
-        // console.log(req.session);
-        // req.session.accessToken = result.token;
+        console.log("received token ")
+        req.session.accessToken = result.token;
         return res.json({
-          "success": true,
-          "token":result.token
+          success: true
         });
       } else {
-        console.log("else");
         return res.json({
-          "success": false
-
+          success: false
         });
       }
     })
