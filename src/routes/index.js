@@ -14,5 +14,4 @@ router.use('/request',require('./request'))
 router.use('/headsUnderProject',require('./headsUnderProject'))
 router.use('/people',require('./people'))
 
->>>>>>> 34788c2f78c867c227be83e09b201437948b774f
 module.exports = router;
