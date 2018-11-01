@@ -35,21 +35,19 @@ router.post("/login", function(req, res) {
     .then(function(result) {
       if (result.success === true) {
         req.session.accessToken = result.token;
-        console.log(req.session)
         return res.json({
-          "success": true
+          success: true
         });
       } else {
         return res.json({
-          "success": false
-
+          success: false
         });
       }
     })
     .catch(function(err) {
       return res.json({
-        "success": false,
-        "error":err
+        success: false,
+        error: err
       });
     });
 });
