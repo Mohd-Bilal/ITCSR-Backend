@@ -7,7 +7,7 @@ methods.people = require('./people');
 // methods.loginCredentials = require('./login_credentials');
 // methods.people = require('./people');
 methods.headsUnderProject = require('./heads_under_project');
-
+methods.loginCredentials = require('./login_credentials')
 methods.heads = require('./heads');
 // methods.loginCreden
 // tials = require('./login_credentials');
