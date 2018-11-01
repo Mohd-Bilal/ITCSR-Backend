@@ -42,9 +42,13 @@ headsUnderProjectMethods.findById = (project_id,head_id) => {
   });
 };
 
- headsUnderProjectMethods.getAllHeadsUnderProject= () => new Promise((resolve,
+ headsUnderProjectMethods.getAllHeadsUnderProject= (project_id) => new Promise((resolve,
   reject) => {
-  models.heads_under_project.findAll()
+  models.heads_under_project.findAll({
+    where:{
+      project_id
+    }
+  })
     .then((result) => {
       resolve(result);
     })

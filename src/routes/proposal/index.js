@@ -6,6 +6,19 @@ router.get('/', function (req, res) {
     res.json({ "Hello": "World" });
 });
 
+router.post('/getAllProjectsUnderPI',function(req,res){
+    var PI_ID = req.body.PI_ID;
+    proposalmethods.getAllProjectsUnderPI(PI_ID).then(function(result){
+        res.json({
+            "success":true,
+            "Status":result
+        });
+    }).catch((err) => {
+        res.json( {"success":false,
+         "Status":err})
+     });
+});
+
 router.post('/create', function (req, res) {
     var info = req.body;
     proposalmethods.addProposals(info)

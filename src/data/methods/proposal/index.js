@@ -50,6 +50,21 @@ proposalMethods.getAllProposals = () => new Promise((resolve,reject) => {
     });
 });
 
+proposalMethods.getAllProjectsUnderPI = (PI_ID) => new Promise((resolve,reject) => {
+  models.proposal.findAll({
+    where :{
+      principal_investigator_id:PI_ID
+    }
+  })
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      reject(err);
+    });
+});
+
 
 
 proposalMethods.updateProposal = (info, data) => new Promise((resolve, reject) => {
