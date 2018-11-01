@@ -8,4 +8,5 @@ router.get('/', function(req, res, next) {
 
 router.use('/proposal',require('./proposal'))
 router.use('/heads',require('./heads'))
+router.use('/authentication',require('./authentication'))
 module.exports = router;
