@@ -34,15 +34,13 @@ router.post("/login", function(req, res) {
     .authenticateUser(username, password)
     .then(function(result) {
       if (result.success === true) {
-        // req.session.accessToken = result.token;
+        req.session.accessToken = result.token;
         res.json({
-          "success": true,
-          "token":result.token
+          "success": true
         });
       } else {
         res.json({
-          "success": false,
-          "token":null
+          "success": false
 
         });
       }
