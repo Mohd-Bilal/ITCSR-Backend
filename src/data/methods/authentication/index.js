@@ -33,9 +33,12 @@ authenticationMethods.authenticateUser = function(username, password) {
         if (result) {
           bcrypt.compare(password,result.password,function(err,res){
             if(res === true){
+              console.log("correct password-bcrypt");
               const token = jwt.sign({id:result.user_id},key,{ expiresIn: '1h' })
               resolve({"success":true,"token":token})
             }else{
+              console.log("wrong password-bcrypt");
+              
               reject({"success":false,"token":null})
             }
           })
