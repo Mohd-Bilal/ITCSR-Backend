@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const methods = require('../../data/methods/heads')
+const methods = require('../../data/methods/heads_under_project')
 router.get('/',function(req,res){
     res.json({
         "Hello":"world"
@@ -8,7 +8,7 @@ router.get('/',function(req,res){
 })
 
 router.get('/getAll',function(req,res){
-    methods.getAllHeads().then(function(result){
+    headsUnderProjectmethods.getAllHeadsUnderProject().then(function(result){
         res.json({
             "success":true,
             "Status":result
@@ -21,7 +21,9 @@ router.get('/getAll',function(req,res){
 
 router.post('/create',function(req,res){
     const info  = req.body
-    methods.addHeads(info).then((result) => {
+    info["spent"] = 0; //add new head!!
+    methods.addNewHeadUnderProject(info).then((result) => {
+    // methods.addPeople(info).then((result) => {
         res.json({
             "success":true,
             "Status":result
@@ -35,7 +37,23 @@ router.post('/create',function(req,res){
 router.post('/update',function(req,res){
     const info = req.body.info
     const update = req.body.update
-    methods.updateHeads(info,update).then((result) => {
+    methods.updateHeadsUnderProject(info,update).then((result) => {
+        res.json({
+            "success":true,
+            "Status":result
+        })
+    }).catch((err) => {
+        res.json({
+            "success":false,
+            "Status":result
+        })        
+    });
+})
+
+router.post('/delete',function(req,res){
+    const info = req.body
+ 
+    methods.deleteHeadsUnderProject(info).then((result) => {
         res.json({
             "success":true,
             "Status":result

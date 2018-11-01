@@ -85,7 +85,7 @@ var purchaseUnderProject = require('./purchase_under_project');
 
 //CREATE
 // heads.addHeads({
-//   head_id:0,
+//   head_id:1,
 //   name:"machinery",
 //   remark:{"a":"b", "c":"d"}
 
@@ -105,9 +105,9 @@ var purchaseUnderProject = require('./purchase_under_project');
 //   });
 // });
 
-headsUnderProject.updateSpent(1,1,20).then(function(result){
-  console.log(result)
-});
+// headsUnderProject.updateSpent(1,1,20).then(function(result){
+//   console.log(result)
+// });
 // heads.deleteHeads({head_id:0}).then(function(result){
 // console.log(result);
 // }).catch(function(result){
@@ -143,22 +143,22 @@ headsUnderProject.updateSpent(1,1,20).then(function(result){
 // console.log(result);
 // });
 
-// //CREATE
-// request.addRequest({
-//     request_id:30,
-//     project_id : 1,
-//     head_id:1,
-//     description: "First request is being submitted",
-//     date: "2018-02-11",
-//     approval_level: 0,
-//     estimated_amount : 1000.00,
-//     remark: {}
-//   }).then(function(result){
-//     console.log(result);
-//   })
-//   .catch(function(err){
-//     console.log("fund exceeded");
-//   });
+//CREATE
+request.addRequest({
+    request_id:60,
+    project_id : 1,
+    head_id:1,
+    description: "First request is being submitted",
+    date: "2018-02-11",
+    approval_level: 0,
+    estimated_amount : 10.00,
+    remark: {}
+  }).then(function(result){
+    console.log(result);
+  })
+  .catch(function(err){
+    console.log("fund exceeded");
+  });
   
   // //FIND BY ID
   // request.findById(1).then(function(result){
