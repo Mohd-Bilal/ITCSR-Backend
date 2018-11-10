@@ -49,9 +49,9 @@ headsMethods.getMultipleHeads = (head_ids) =>new Promise((resolve,reject)=>{
       }
     },
 
-  }).then((headss) => {
-    if (headss) {
-      resolve(headss);
+  }).then((head_info) => {
+    if (head_info) {
+      resolve(head_info);
     } else {
       reject(new Error('Not a valid head id'));
     }

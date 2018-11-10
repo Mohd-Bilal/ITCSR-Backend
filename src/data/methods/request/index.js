@@ -30,7 +30,7 @@ requestMethods.addRequest = function(info){
       }
       else{
           console.log("rejected");
-          throw new Error();
+          throw new Error("amount larger than allowed value");
       }
 
   })

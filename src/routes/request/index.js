@@ -12,7 +12,8 @@ router.post('/create',function(req,res){
     .then((result) => {
        res.json({"success":true,"status":result});
     }).catch((err) => { 
-        res.json({"success":false,"Error":err});
+        console.log("Route caught error"+err);
+        res.json({"success":false,"error":""+err});
     });
 });
 router.post('/update',function(req,res){
