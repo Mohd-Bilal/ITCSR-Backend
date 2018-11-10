@@ -2,8 +2,9 @@ const Promise = require('bluebird');
 
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
-
+const Sequelize = require('sequelize');
 const headsMethods = {};
+const Op = Sequelize.Op;
 
 headsMethods.addHeads = (info) => {
   console.log('inside adding heads');
@@ -39,6 +40,27 @@ headsMethods.findById = (head_id) => {
     });
   });
 };
+
+headsMethods.getMultipleHeads = (head_ids) =>new Promise((resolve,reject)=>{
+  models.heads.findAll({
+    where: {
+      head_id: {
+        [Op.or]: head_ids
+      }
+    },
+
+  }).then((headss) => {
+    if (headss) {
+      resolve(headss);
+    } else {
+      reject(new Error('Not a valid head id'));
+    }
+  }).catch((err) => {
+    console.log(err);
+    reject(err);
+  });
+}
+)
 
 headsMethods.getAllHeads = () => new Promise((resolve,reject) => {
   models.heads.findAll()
