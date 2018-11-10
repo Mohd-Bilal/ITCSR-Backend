@@ -14,13 +14,14 @@ router.use('/proposal',require('./proposal'))
 router.use('/heads',require('./heads'))
 
 
-router.use('/heads',jwtVerifyToken,require('./heads'))
+// router.use('/heads',jwtVerifyToken,require('./heads'))
 
 router.use('/authentication',require('./authentication'))
 router.use('/request',require('./request'))
 router.use('/headsUnderProject',require('./headsUnderProject'))
 router.use('/people',require('./people'))
 router.use('/upload',require('./file'))
+router.use('/heads',require('./heads'))
 
 
 module.exports = router;

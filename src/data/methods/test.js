@@ -105,25 +105,29 @@ var purchaseUnderProject = require('./purchase_under_project');
 // });
 
 // //FIND BY ID
-heads.getHeadNames([1,2]).then(function(result){
-console.log(result);
+heads.getMultipleHeads([1]).then(function(result){
+// console.log(result);
+result.forEach(function(row){
+  console.log(row.get('name'));
+});
 })
 .catch(re=>{
   console.log(re);
+  console.log("evidem")
 });
 
 // //GET ALL
 // heads.getAllHeads().then(function(result){
-//   result.forEach(function(row){
-//     console.log(row.get('head_id'));
-//   });
+  // result.forEach(function(row){
+  //   console.log(row.get('head_id'));
+  // });
 // });
-  headsUnderProject.getAllHeadsUnderProject(1).then(function(result){
-    console.log(result);
-  })
-  .catch(function(err){
-    console.log(result);
-  })
+  // headsUnderProject.getAllHeadsUnderProject(1).then(function(result){
+  //   console.log(result);
+  // })
+  // .catch(function(err){
+  //   console.log(result);
+  // })
 // headsUnderProject.updateSpent(1,1,20).then(function(result){
 //   console.log(result)
 // });

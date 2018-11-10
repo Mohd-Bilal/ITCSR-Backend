@@ -9,6 +9,28 @@ router.get('/',function(req,res){
     })
 })
 
+router.post('/getMultipleHeads',function(req,res){
+    const head_ids = req.body.head_ids;
+    console.log(head_ids);
+    methods.getMultipleHeads(head_ids)
+    .then(function(result){
+        console.log("devide")
+        console.log({
+            "success":true,
+            "Status":result
+        });
+        res.json({
+            "success":true,
+            "Status":result
+        });
+    })
+    .catch(function(err){
+        console.log("devidem -_-")
+        res.json( {"success":false,
+         "Status":err});
+    })
+});
+
 router.get('/getAll',function(req,res){
     methods.getAllHeads().then(function(result){
         res.json({
