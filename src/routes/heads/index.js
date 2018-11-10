@@ -3,7 +3,6 @@ const express = require('express')
 const router = express.Router()
 const methods = require('../../data/methods/heads')
 router.get('/',function(req,res){
-    console.log(req)
     res.json({
         "Hello":"world"
     })

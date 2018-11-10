@@ -7,7 +7,7 @@ router.get("/", function(req, res) {
 });
 router.post("/register", function(req, res) {
   methods
-    .registerUser(req.body.info)
+    .registerUser(req.body)
     .then(function(result) {
       if (result.success === true)
         res.json({
