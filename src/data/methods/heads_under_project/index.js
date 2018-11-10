@@ -33,6 +33,7 @@ headsUnderProjectMethods.findById = (project_id,head_id) => {
       if (result) {
         resolve(result);
       } else {
+        console.log("error from find_by_id, heads under project");
         reject(new Error('Not a valid  id'));
       }
     }).catch((err) => {

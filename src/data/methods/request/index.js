@@ -12,30 +12,31 @@ requestMethods.addRequest = function(info){
 
   return new Promise(function(resolve,reject){
 
-    methods.headsUnderProject.findById(info.head_id,info.project_id)
+    methods.headsUnderProject.findById(info.project_id,info.head_id)
     .then(function(result){
       var fund,spent;
       //bad implementation, change!
+      // console.log("result is:"+result);
       result.forEach(function(row){
-          // console.log(row.get('project_id'));
+          console.log(row.get('project_id'));
           fund = row.get('fund');
           spent = row.get('spent');
-          // console.log(fund);
-          // console.log(spent)
+          console.log("fund:"+fund);
+          console.log("spent:"+spent)
+          if(info.estimated_amount<(fund-spent)){
+            console.log("inside if fund ok")
+            console.log("resolved");
+            return ;
+          }
+          else{
+            console.log("rejected");
+            throw new Error("amount larger than allowed value");  
+        }
       });
 
-      if(info.estimated_amount<(fund-spent)){
-          console.log("resolved");
-          return "ethi";
-      }
-      else{
-          console.log("rejected");
-          throw new Error("amount larger than allowed value");
-      }
-
   })
-  .then(function(res){
-    console.log("ethi"+res);
+  .then(function(){
+    console.log("Inserting into requests");
     models.request.create(info)
     .then((result) => {
       resolve(result);
