@@ -105,9 +105,12 @@ var purchaseUnderProject = require('./purchase_under_project');
 // });
 
 // //FIND BY ID
-// heads.findById(1).then(function(result){
-// console.log(result);
-// });
+heads.getHeadNames([1,2]).then(function(result){
+console.log(result);
+})
+.catch(re=>{
+  console.log(re);
+});
 
 // //GET ALL
 // heads.getAllHeads().then(function(result){

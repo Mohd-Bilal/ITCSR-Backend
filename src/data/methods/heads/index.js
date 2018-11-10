@@ -39,6 +39,18 @@ headsMethods.findById = (head_id) => {
     });
   });
 };
+headsMethods.getHeadNames =(head_ids)=> new Promise((resolve,reject)=>{
+  head_ids.forEach(element => {
+    var head = headsMethods.findById(element);
+    console.log(head);
+  });
+  }).then(function(res){
+    console.log(res);
+  })
+  .catch(function(err){
+    console.log(err);
+  });
+  
 
 headsMethods.getAllHeads = () => new Promise((resolve,reject) => {
   models.heads.findAll()
