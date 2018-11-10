@@ -17,7 +17,7 @@ router.post('/getAll',function(req,res){
     }).catch((err) => {
         res.json( {"success":false,
          "Status":err})
-     });
+    });
 });
 
 router.post('/create',function(req,res){

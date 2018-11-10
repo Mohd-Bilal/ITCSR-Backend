@@ -13,8 +13,8 @@ router.use('/proposal',require('./proposal'))
 
 router.use('/heads',require('./heads'))
 
-
-router.use('/heads',jwtVerifyToken,require('./heads'))
+//insert jwtVerifyToken in b/w all private routes
+router.use('/heads',require('./heads'))
 
 router.use('/authentication',require('./authentication'))
 router.use('/request',require('./request'))
