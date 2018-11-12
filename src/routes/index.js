@@ -21,6 +21,6 @@ router.use('/headsUnderProject',require('./headsUnderProject'))
 router.use('/people',require('./people'))
 router.use('/upload',require('./file'))
 router.use('/heads',require('./heads'))
-
+router.use('/parametersUnderHeads',require('./parametersUnderHeads'))
 
 module.exports = router;

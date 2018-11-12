@@ -10,6 +10,8 @@ var people = require('./people');
 var request = require('./request');
 var headsUnderProject = require('./heads_under_project');
 var purchaseUnderProject = require('./purchase_under_project');
+var parametersUnderHead = require('./parameters_under_heads')
+
 // var fs = require('fs');
  
 
@@ -105,16 +107,16 @@ var purchaseUnderProject = require('./purchase_under_project');
 // });
 
 // //FIND BY ID
-heads.getMultipleHeads([1]).then(function(result){
-// console.log(result);
-result.forEach(function(row){
-  console.log(row.get('name'));
-});
-})
-.catch(re=>{
-  console.log(re);
-  console.log("evidem")
-});
+// heads.getMultipleHeads([1]).then(function(result){
+// // console.log(result);
+// result.forEach(function(row){
+//   console.log(row.get('name'));
+// });
+// })
+// .catch(re=>{
+//   console.log(re);
+//   console.log("evidem")
+// });
 
 // //GET ALL
 // heads.getAllHeads().then(function(result){
@@ -283,3 +285,22 @@ result.forEach(function(row){
 //   });
 
 
+//CREATE MULTIPLE
+var info=[]
+var head={};
+var head2={}
+head.head_id=2;
+head.parameter_id=11;
+head.parameter_name="kas"
+info.push(head);
+head2.head_id=1;
+head2.parameter_id=91;
+head2.parameter_name="as"
+info.push(head2)
+parametersUnderHead.bulkCreate(info)
+.then(res=>{
+  console.log(res);
+})
+.catch(err=>{
+  console.log(err);
+})
