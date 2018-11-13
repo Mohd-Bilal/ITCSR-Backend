@@ -19,6 +19,20 @@ parametersunderheadsMethods.addParametersunderheads = (info) => {
   });
 };
 
+parametersunderheadsMethods.bulkCreate = (info) =>{
+  console.log("Inside bulk create");
+  return new Promise((resolve, reject) => {
+    models.parameters_under_heads.bulkCreate(info)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
+      });
+  });
+  
+}
 // findid
 // parameterunderheadsMethods.findById = (parameter_id) => {
 //   // console.log('finding by id');
