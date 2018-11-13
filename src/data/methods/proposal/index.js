@@ -2,8 +2,11 @@ const Promise = require('bluebird');
 
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
-
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 const proposalMethods = {};
+
+
 
 proposalMethods.addProposals = (info,t) => {
   return new Promise((resolve, reject) => {
@@ -107,4 +110,27 @@ proposalMethods.deleteProposal = info => new Promise((resolve,reject) => {
 
 });
 
+proposalMethods.getProposalNamesWithIDs = function (project_ids) {
+  return new Promise((resolve, reject) => {
+    models.proposal
+      .findAll(
+        {
+        raw:true,
+        attributes: ['project_id', 'name'],
+        where: {
+          project_id: {
+            [Op.or]: project_ids
+          }
+        }
+      })
+      .then(function (result) {
+        
+        if (result.length === 0) reject(new Error());
+        else resolve(result);
+      })
+      .catch(function (err) {
+        reject(err);
+      });
+  });
+}
 module.exports = proposalMethods

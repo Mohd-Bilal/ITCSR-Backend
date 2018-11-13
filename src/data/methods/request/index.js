@@ -6,6 +6,17 @@ const methods = require('../../methods/');
 
 const requestMethods = {};
 
+
+function dictionarification(json){
+  var result = {};
+  json.forEach(function(row){
+    
+    result[row.project_id] = row.name;
+  });
+  // console.log(result);
+  return result;
+}
+
 requestMethods.addRequest = function(info){
   // const fund;
   // const spent;
@@ -75,7 +86,7 @@ requestMethods.findById = (request_id) => {
 };
 
 requestMethods.getAllRequests = () => new Promise((resolve,reject) => {
-  models.request.findAll()
+  models.request.findAll({raw:true})
     .then((result) => {
       resolve(result);
     })
@@ -83,7 +94,7 @@ requestMethods.getAllRequests = () => new Promise((resolve,reject) => {
       console.log(err);
       reject(err);
     });
-});
+});'18'
 
 requestMethods.updateRequest = (info, data) => new Promise((resolve, reject) => {
   models.request.update(data, {
@@ -123,4 +134,36 @@ requestMethods.deleteRequest = info => new Promise((resolve,reject) => {
   });
 });
 
+requestMethods.getAllRequestsForDashboard = function(){
+  var proposalIDs = [];
+  return new Promise((resolve,reject)=>{
+    this.getAllRequests()
+    .then(function(requests_result){
+        // console.log(requests_result)
+        requests_result.forEach(function(row){
+          proposalIDs.push(row.project_id)   
+        });
+        
+        methods.proposal.getProposalNamesWithIDs(proposalIDs)
+        .then(function(project_result){
+          console.log("Got project_result");
+          project_result = dictionarification(project_result);
+          for (let i = 0; i < requests_result.length; i++) {
+            requests_result[i]["name"]=project_result[requests_result[i].project_id];
+          }
+          // console.log(requests_result);
+          resolve(requests_result);
+        })
+        .catch(function(err){
+          console.log("ERROR:"+err);
+          reject(err);
+        });
+        //maaattt mai
+        
+    })
+    .catch(function(err){
+      reject(err);
+    })
+  })
+}
 module.exports = requestMethods;

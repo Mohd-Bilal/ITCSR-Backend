@@ -1,4 +1,6 @@
 const Promise = require("bluebird");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const models = require("../../models");
 // const obtainInformation = require('./obtainInformation');
@@ -103,16 +105,17 @@ peopleMethods.getAllPI = () =>
   new Promise((resolve, reject) => {
     models.people
       .findAll({
-        where:{
-          privilege:2
+        where: {
+          privilege: 2
         }
       })
-      .then(function(result) {
+      .then(function (result) {
         if (result.length === 0) reject(new Error());
         else resolve(result);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         reject(err);
       });
   });
+
 module.exports = peopleMethods;
