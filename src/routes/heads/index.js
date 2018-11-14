@@ -41,10 +41,25 @@ router.get('/getAll',function(req,res){
          "Status":err})
      });
 });
+//heads are usually created with parameters
+// router.post('/create',function(req,res){
+//     const info  = req.body
+//     methods.addHeads(info).then((result) => {
+//         res.json({
+//             "success":true,
+//             "Status":result
+//         })
+//     }).catch((err) => {
+//        res.json( {"success":false,
+//         "Status":err})
+//     });
+// })
 
-router.post('/create',function(req,res){
-    const info  = req.body
-    methods.addHeads(info).then((result) => {
+router.post('/createWithParameters',function(req,res){
+    const head_info  = req.body.head_info;
+    const parameter_info  = req.body.parameter_info;
+    
+    methods.addHeadsWithParameters(head_info,parameter_info).then((result) => {
         res.json({
             "success":true,
             "Status":result

@@ -3,6 +3,8 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 const Sequelize = require('sequelize');
+var { sequelize } = models;
+
 const headsMethods = {};
 const Op = Sequelize.Op;
 
@@ -20,13 +22,50 @@ headsMethods.addHeads = (info) => {
   });
 };
 
+
+headsMethods.addHeadsWithParameters = (head_info, parameter_info) => {
+  console.log('inside adding heads');
+
+  return new Promise((resolve, reject) => {
+    sequelize.transaction(function (t) {
+
+      return models.heads.create(head_info,{transaction:t})
+        .then(function (result) {
+          var head_id = result.get("head_id");
+          console.log("created HEAD id:"+head_id);
+          // console.log();
+          for (let i = 0; i < parameter_info.length; i++) {
+            parameter_info[i]["head_id"]=head_id;
+          }
+          return models.parameters_under_heads.bulkCreate(parameter_info,{transaction:t})
+            .then((result) => {
+              console.log("created parameters under HEAD");
+              return result;
+              // resolve(result);
+            });
+
+          
+        });
+    })
+    .then(function (result) {
+      console.log("transaction kazhinj");
+      resolve(result);
+    })
+      .catch(function (err) {
+        console.log("transaction moonj");
+        reject(err);
+      });
+  });
+
+};
+
 // findid
 headsMethods.findById = (head_id) => {
   // console.log('finding by id');
   return new Promise((resolve, reject) => {
     models.heads.findAll({
       where:
-      { head_id },
+        { head_id },
 
     }).then((headss) => {
       if (headss) {
@@ -41,7 +80,7 @@ headsMethods.findById = (head_id) => {
   });
 };
 
-headsMethods.getMultipleHeads = (head_ids) =>new Promise((resolve,reject)=>{
+headsMethods.getMultipleHeads = (head_ids) => new Promise((resolve, reject) => {
   models.heads.findAll({
     where: {
       head_id: {
@@ -62,7 +101,7 @@ headsMethods.getMultipleHeads = (head_ids) =>new Promise((resolve,reject)=>{
 }
 )
 
-headsMethods.getAllHeads = () => new Promise((resolve,reject) => {
+headsMethods.getAllHeads = () => new Promise((resolve, reject) => {
   models.heads.findAll()
     .then((result) => {
       resolve(result);
@@ -93,7 +132,7 @@ headsMethods.updateHeads = (info, data) => new Promise((resolve, reject) => {
 
 
 
-headsMethods.deleteHeads = info => new Promise((resolve,reject) => {
+headsMethods.deleteHeads = info => new Promise((resolve, reject) => {
   models.heads.destroy({
     where: {
       head_id: info.head_id,

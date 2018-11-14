@@ -98,8 +98,8 @@ var parametersUnderHead = require('./parameters_under_heads')
 
 //CREATE
 // heads.addHeads({
-//   head_id:1,
-//   name:"machinery",
+//   // head_id:1,
+//   name:"travel",
 //   remark:{"a":"b", "c":"d"}
 
 // }).then(function(result){
@@ -141,8 +141,8 @@ var parametersUnderHead = require('./parameters_under_heads')
 // PEOPLE TEST
 
 // people.addPeople({
-//   people_id:2,
-//   name:"sasidharan",
+//   people_id:3,
+//   name:"aashaan",
 //   designation:"principal_investigator",
 //   privilege:2,
 //   date:"2018-03-03",
@@ -286,21 +286,21 @@ var parametersUnderHead = require('./parameters_under_heads')
 
 
 //CREATE MULTIPLE
-var info=[]
-var head={};
-var head2={}
-head.head_id=2;
-head.parameter_id=11;
-head.parameter_name="kas"
-info.push(head);
-head2.head_id=1;
-head2.parameter_id=91;
-head2.parameter_name="as"
-info.push(head2)
-parametersUnderHead.bulkCreate(info)
-.then(res=>{
-  console.log(res);
-})
-.catch(err=>{
-  console.log(err);
-})
+// var info=[]
+// var head={};
+// var head2={}
+// head.head_id=2;
+// head.parameter_id=11;
+// head.parameter_name="kas"
+// info.push(head);
+// head2.head_id=1;
+// head2.parameter_id=91;
+// head2.parameter_name="as"
+// info.push(head2)
+// parametersUnderHead.bulkCreate(info)
+// .then(res=>{
+//   console.log(res);
+// })
+// .catch(err=>{
+//   console.log(err);
+// })
