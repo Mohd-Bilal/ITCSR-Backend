@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) =>
       },
       project_id : DataTypes.INTEGER(),
       head_id : DataTypes.INTEGER(),
-      description: DataTypes.STRING(1000),
+      description: DataTypes.JSON(),
       date: DataTypes.DATE(),
       approval_level: DataTypes.INTEGER(),
       estimated_amount :DataTypes.DOUBLE()//,

@@ -21,6 +21,20 @@ router.post('/create',function(req,res){
     });
 })
 
+router.post('/getParametersUnderHead',function(req,res){
+    const info = req.body.head_id;
+    methods.getParametersUnderHead(info)
+    .then(result=>{
+        res.json({
+            "success":true,
+            "Status":result
+        })
+    }).catch(err=>{
+        res.json( {"success":false,
+        "Status":err})
+    })
+})
+
 // router.post('/bulk',function(req,res){
 //     const info = req.body.parameters;
 //     methods.bulkCreate(info).then((result)=>{
