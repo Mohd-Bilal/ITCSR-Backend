@@ -41,7 +41,9 @@ router.post("/login", function(req, res) {
         // console.log(req.session);
         return res.json({
           "success": true,
-          "token":result.token
+          "token":result.token,
+          "privilege":result.privilege,
+          "user_id":result.user_id
         });
       } else {
         return res.json({
