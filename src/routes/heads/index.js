@@ -30,7 +30,7 @@ router.post('/getMultipleHeads',function(req,res){
     })
 });
 
-router.get('/getAll',function(req,res){
+router.post('/getAll',function(req,res){
     methods.getAllHeads().then(function(result){
         res.json({
             "success":true,
