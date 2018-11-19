@@ -19,6 +19,19 @@ router.post('/getAllProjectsUnderPI',function(req,res){
      });
 });
 
+router.post('/findByID',function(req,res){
+    var project_id = req.body.project_id;
+    proposalmethods.findById(project_id).then(function(result){
+        res.json({
+            "success":true,
+            "Status":result
+        });
+    }).catch((err) => {
+        res.json( {"success":false,
+         "Status":err})
+     });
+});
+
 router.post('/create', function (req, res) {
     var info = req.body;
     proposalmethods.addProposals(info)
