@@ -95,4 +95,32 @@ router.post('/delete',function(req,res){
     })
 })
 
+router.post('/approveRequest',function(req,res){
+    const info=req.body.request_id;
+    methods.approve(info)
+    .then(function(result){
+        res.json({"success":true,
+                "status":result})
+    }).catch(function(err){
+        res.json({
+            "success":false,
+            "status":err
+        })
+    })
+});
+
+router.post('/rejectRequest',function(req,res){
+    const info=req.body.request_id;
+    methods.reject(info)
+    .then(function(result){
+        res.json({"success":true,
+                "status":result})
+    }).catch(function(err){
+        res.json({
+            "success":false,
+            "status":err
+        })
+    })
+});
+
 module.exports = router;

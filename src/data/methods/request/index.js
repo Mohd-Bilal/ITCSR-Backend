@@ -94,7 +94,34 @@ requestMethods.getAllRequests = () => new Promise((resolve,reject) => {
       console.log(err);
       reject(err);
     });
-});'18'
+});
+
+requestMethods.approve = (request_id) => new Promise((resolve,reject) => {
+  models.request.increment('approval_level',{where:{request_id}})
+    .then((result) => {
+      console.log("inside then")
+      resolve(result);
+    })
+    .catch((err) => {
+      console.log("In error")
+      console.log(err);
+      reject(err);
+    });
+});
+
+requestMethods.reject = (request_id) => new Promise((resolve,reject) => {
+  models.request.decrement('approval_level',{where:{request_id}})
+    .then((result) => {
+      console.log("inside then")
+      resolve(result);
+    })
+    .catch((err) => {
+      console.log("In error")
+      console.log(err);
+      reject(err);
+    });
+});
+
 
 requestMethods.updateRequest = (info, data) => new Promise((resolve, reject) => {
   models.request.update(data, {
