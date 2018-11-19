@@ -4,7 +4,8 @@ const secret = config.API_SECRET; //+ user's unique secret";
 
 function jwtVerifyToken(req, res, next)
 {
-  const token = req.headers['x-access-token'];
+  console.log(req.headers);
+  const token = req.body.token;
   if (!token)
   {
     console.log('no token');
