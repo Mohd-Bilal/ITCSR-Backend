@@ -46,6 +46,19 @@ router.post('/getAll',function(req,res){
     
 });
 
+
+router.post('/getRequest',function(req,res){
+    var info = req.body.request_id;
+    console.log(info);
+    methods.findById(info)
+    .then((result) => {
+       res.json({"success":true,"status":result});
+    }).catch((err) => { 
+        console.log("Route caught error"+err);
+        res.json({"success":false,"error":""+err});
+    });
+});
+
 router.post('/update',function(req,res){
     // const proposalId = req.body.proposal_id;
     const info = req.body.info;

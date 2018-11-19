@@ -58,8 +58,22 @@ parametersunderheadsMethods.addParametersunderheads = (info) => {
 //   });
 // };
 
- parametersunderheadsMethods.getAllParametersunderheads = () => new Promise((resolve,reject) => {
-  models.parameters_under_heads.findAll()
+// parametersunderheadsMethods.getParametersUnderHead = () => new Promise((resolve,reject) => {
+//   models.parameters_under_heads.findAll()
+//     .then((result) => {
+//       resolve(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       reject(err);
+//     });
+// });
+ parametersunderheadsMethods.getParametersUnderHead = (head_id) => new Promise((resolve,reject) => {
+  models.parameters_under_heads.findAll({
+    where:{
+      head_id
+    }
+  })
     .then((result) => {
       resolve(result);
     })

@@ -30,6 +30,19 @@ router.post('/create',function(req,res){
     });
 })
 
+router.post('/findByID',function(req,res){
+    const info  = req.body.people_id;
+    methods.findById(info).then((result) => {
+        res.json({
+            "success":true,
+            "Status":result
+        })
+    }).catch((err) => {
+       res.json( {"success":false,
+        "Status":err})
+    });
+})
+
 router.post('/update',function(req,res){
     const info = req.body.info
     const update = req.body.update

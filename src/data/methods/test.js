@@ -304,3 +304,9 @@ var parametersUnderHead = require('./parameters_under_heads')
 // .catch(err=>{
 //   console.log(err);
 // })
+// parametersUnderHead.getParametersUnderHead(1)
+// .then(res=>{
+//   console.log(res);
+// }).catch(err=>{
+//   console.log(err)
+// })
