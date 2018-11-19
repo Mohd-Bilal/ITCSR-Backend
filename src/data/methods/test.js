@@ -310,3 +310,20 @@ var parametersUnderHead = require('./parameters_under_heads')
 // }).catch(err=>{
 //   console.log(err)
 // })
+
+// request.findById(1).then(req=>{
+//   console.log("keri");
+//   return req.increment('approval_level', {by: 1})
+// }).then(res=>{
+//   console.log(res);
+// })
+// .catch(err=>{
+//   console.log("error")
+// })
+
+request.reject(1).then(res=>{
+  console.log(res)
+})
+.catch(err=>{
+  console.log(err)
+})
