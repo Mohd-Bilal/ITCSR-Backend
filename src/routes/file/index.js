@@ -1,11 +1,11 @@
 
 var multer = require('multer')
-
+var fname
 var storage = multer.diskStorage(
     {
         destination: './uploads/',
         filename: function ( req, file, cb ) {
-           
+           fname  = file
             cb( null, file.originalname); //saving file with original filename
         }
     }
@@ -19,7 +19,8 @@ var router = express.Router()
 //for uploading a single file
 
 router.post('/', upload.single('file'), function (req, res) {
-  console.log(req.file)
+    if(req.file !=null)
+        res.send("success")
 })
 
 module.exports = router

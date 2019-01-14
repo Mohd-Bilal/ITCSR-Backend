@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const methods = require("../../data/methods/authentication");
 const bcrypt = require("bcrypt");
-// router.get("/", function(req, res) {
-//   res.json({ Status: "Sucess" });
-// });
+router.get("/", function(req, res) {
+  res.json({ Status: "Sucess" });
+});
 router.post("/register", function(req, res) {
   methods
     .registerUser(req.body)
