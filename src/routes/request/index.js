@@ -46,6 +46,29 @@ router.post('/getAll',function(req,res){
     
 });
 
+router.post('/getAllUnderPI',function(req,res){
+    const person_id = req.body.person_id;
+    //return requests according to his privilege
+    var results = {};
+    // var people_ids =[];
+    methods.getAllRequestsUnderPIForDashboard(person_id)
+    .then(function(result){
+        console.log("got result for dashboard");
+        res.json({
+            "success":true,
+            "status":result
+        })
+    })
+    .catch(function(err){
+        console.log(err);
+        res.json({
+            "success":false,
+            "status":err
+        })
+    });
+    
+});
+
 
 router.post('/getRequest',function(req,res){
     var info = req.body.request_id;

@@ -48,11 +48,11 @@ headsMethods.addHeadsWithParameters = (head_info, parameter_info) => {
         });
     })
     .then(function (result) {
-      console.log("transaction kazhinj");
+      console.log("transaction done");
       resolve(result);
     })
       .catch(function (err) {
-        console.log("transaction moonj");
+        console.log("transaction failed");
         reject(err);
       });
   });

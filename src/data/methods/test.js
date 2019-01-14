@@ -178,7 +178,8 @@ var parametersUnderHead = require('./parameters_under_heads')
 //     approval_level: 0,
 //     estimated_amount : 10.00,
 //     remark: {}
-//   }).then(function(result){
+//   }).then(function(result){c
+
 //     console.log(result);
 //   })
 //   .catch(function(err){
@@ -191,11 +192,15 @@ var parametersUnderHead = require('./parameters_under_heads')
   // });
   
 //   GET ALL
-//   request.getAllRequests().then(function(result){
-//     result.forEach(function(row){
-//       console.log(row.get('request_id'));
-//     });
-//   });
+  request.getAllRequestsUnderPI(11).then(function(result){
+    // result.forEach(function(row){
+    //   console.log(row.get('request_id'));
+    // });
+    console.log("kitti")
+  }).catch(err=>{
+    console.log("sheriyayilla")
+  });
+
 //    DELETE
 //   request.deleteRequest({request_id:0}).then(function(result){
 //   console.log(result);
