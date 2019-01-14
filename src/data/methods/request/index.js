@@ -3,6 +3,10 @@ const Promise = require('bluebird');
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 const methods = require('../../methods/');
+const Sequelize = require('sequelize');
+
+const Op = Sequelize.Op;
+
 
 const requestMethods = {};
 
@@ -87,6 +91,23 @@ requestMethods.findById = (request_id) => {
 
 requestMethods.getAllRequests = () => new Promise((resolve,reject) => {
   models.request.findAll({raw:true})
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      reject(err);
+    });
+});
+
+
+requestMethods.getAllRequestsUnderPI = (pi_id) => new Promise((resolve,reject) => {
+  models.request.findAll({
+    where: {
+      principal_investigator_id: {
+        [Op.or]: pi_id
+      }
+    },raw:true})
     .then((result) => {
       resolve(result);
     })
@@ -185,7 +206,44 @@ requestMethods.getAllRequestsForDashboard = function(){
           console.log("ERROR:"+err);
           reject(err);
         });
-        //maaattt mai
+        
+    })
+    .catch(function(err){
+      reject(err);
+    })
+  })
+}
+
+requestMethods.getAllRequestsUnderPIForDashboard = function(pi_id){
+  var proposalIDs = [];
+  return new Promise((resolve,reject)=>{
+    this.getAllRequests()
+    .then(function(requests_result){
+        // console.log(requests_result)
+        var final_res=[]
+        requests_result.forEach(function(row){
+          proposalIDs.push(row.project_id)   
+        });
+        
+        methods.proposal.getProposalDataWithIDs(proposalIDs,pi_id)
+        .then(function(project_result){
+          console.log("Got project_result");
+          project_result = dictionarification(project_result);
+          for (let i = 0; i < requests_result.length; i++) {
+            requests_result[i]["name"]=project_result[requests_result[i].project_id];
+            if(project_result[requests_result[i].project_id]!=null){
+              console.log(requests_result[i]);
+              final_res.push(requests_result[i])
+            }
+          }
+          console.log(requests_result);
+          // resolve(requests_result);
+          resolve(final_res);
+        })
+        .catch(function(err){
+          console.log("ERROR:"+err);
+          reject(err);
+        });
         
     })
     .catch(function(err){

@@ -133,4 +133,29 @@ proposalMethods.getProposalNamesWithIDs = function (project_ids) {
       });
   });
 }
+
+proposalMethods.getProposalDataWithIDs = function (project_ids,pi_id) {
+  return new Promise((resolve, reject) => {
+    models.proposal
+      .findAll(
+        {
+        raw:true,
+        attributes: ['project_id', 'name'],
+        where: {
+          project_id: {
+            [Op.or]: project_ids
+          },
+          principal_investigator_id:pi_id
+        }
+      })
+      .then(function (result) {
+        
+        if (result.length === 0) reject(new Error());
+        else resolve(result);
+      })
+      .catch(function (err) {
+        reject(err);
+      });
+  });
+}
 module.exports = proposalMethods
