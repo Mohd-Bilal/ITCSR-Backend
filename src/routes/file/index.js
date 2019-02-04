@@ -1,26 +1,33 @@
+var multer = require("multer");
+var fname;
+var fs = require("fs");
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    var proposalLocation = "./uploads/" + req.body.piid;
+    if (!fs.existsSync(proposalLocation)) fs.mkdirSync(proposalLocation);
 
-var multer = require('multer')
-var fname
-var storage = multer.diskStorage(
-    {
-        destination: './uploads/',
-        filename: function ( req, file, cb ) {
-           fname  = file
-            cb( null, file.originalname); //saving file with original filename
-        }
-    }
-);
+    cb(null, proposalLocation + "/");
+  },
+  filename: function(req, file, cb) {
+    fname = file;
+    var proposalLocation = "./uploads/" + req.body.path;
+    if (!fs.existsSync(proposalLocation)) fs.mkdirSync(proposalLocation);
 
-var upload = multer( { storage: storage } );
+    //saving file with original filename}
 
-var express = require('express')
-var router = express.Router()
+    cb(null, file.originalname);
+  }
+});
+
+var upload = multer({ storage: storage });
+
+var express = require("express");
+var router = express.Router();
 
 //for uploading a single file
 
-router.post('/', upload.single('file'), function (req, res) {
-    if(req.file !=null)
-        res.send("success")
-})
+router.post("/", upload.array("file"), function(req, res) {
+  if (req.files != null) res.send("success");
+});
 
-module.exports = router
+module.exports = router;

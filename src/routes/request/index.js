@@ -7,9 +7,6 @@ const peoplemethods = require('../../data/methods/people')
 
 
 
-router.get('/',function(req,res){
-    res.json({"Hello":"World"});
-});
 
 router.post('/create',function(req,res){
     var info = req.body;
@@ -28,7 +25,8 @@ router.post('/getAll',function(req,res){
     //return requests according to his privilege
     var results = {};
     var people_ids =[];
-    methods.getAllRequestsForDashboard()
+    var privilege = req.body.privilege
+    methods.getAllRequestsForDashboard(privilege)
     .then(function(result){
         console.log("got result for dashboard");
         res.json({

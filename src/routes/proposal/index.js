@@ -34,8 +34,6 @@ router.post('/findByID',function(req,res){
 
 router.post('/create', function (req, res) {
     var info = req.body;
-    console.log("sd")
-    console.log(req.body.file)
     proposalmethods.addProposals(info)
         .then((result) => {
             res.json({ "success": true, "status": result });
